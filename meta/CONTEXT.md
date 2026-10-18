@@ -5,6 +5,8 @@
 ---
 
 ## Visão Geral
+> **Escopo atual (DEC-004):** só o layout «limbo» — Projetos cujo modal de arquivos ainda não tem «Selecionar». Onde a interface já tem exclusão em lote nativa, o ClearDrop recusa e aponta o recurso nativo.
+
 ClearDrop é uma ferramenta de navegador que **exclui de uma vez todos — e apenas — os arquivos de conhecimento do Projeto do claude.ai aberto na tela**. Existe porque a atualização de layout de out/2026 tirou do painel o «selecionar todos + lixeira» (também nas contas gratuitas): hoje esvaziar um Projeto de 38 ou 123 arquivos são dezenas de cliques (⋮ → Excluir → confirmar, por arquivo). É a ferramenta-irmã do **FlatDrop**: um achata o repositório e sobe; o ClearDrop esvazia antes de subir.
 
 ## Stack Tecnológica
@@ -44,7 +46,11 @@ Medido em 2026-10-17 sobre `261017-0707.html` (outerHTML real, Projeto com 35 ar
 - **Contagem de referência:** o rodapé diz «35 arquivos · 8% da capacidade do projeto usada» (há um `role="meter"` com `aria-valuenow`). Com 35, havia 35 linhas no DOM: **sem virtualização nesse tamanho**. Com 123, ainda não medido.
 - **Menu ⋮ (medido em 17/10, 174 arquivos):** abre com `.click()`; `[role="menu"]` com **um único** `[role="menuitem"]`, «Remover do projeto»; o Escape fecha. A lista rola, mas **não é virtualizada** até 174.
 - **Layout novo, à noite de 17/10, conta Pro:** o título virou «Contexto», há `role="region"` «Arquivos de contexto» e um botão **«Selecionar»** (`aria-pressed`). Com ele ligado aparecem a caixa «Selecionar tudo» (primeiro `role="checkbox"`), uma caixa por linha, «N selecionado» e `button[aria-label^="Excluir"]` («Excluir 173 itens selecionados»). **A exclusão em lote nativa voltou** — ver a análise `meta/analises/261017-ANALISE-forma-e-seletores.md`.
-- **Não medido:** se a conta gratuita tem «Selecionar»; se a exclusão (por linha ou em lote) pede confirmação.
+- **Três estados de interface convivem, por conta (relato do dono, 18/10):**
+  - **antigo:** cartões com seleção em massa nativa;
+  - **«limbo»:** modal «Arquivos», sem «Selecionar»; é o alvo; medido numa conta Free, com 36 linhas e o mesmo menu ⋮ «Remover do projeto»;
+  - **novo:** modal «Contexto» com «Selecionar».
+- **Não medido:** se «Remover do projeto» pede confirmação; o observador `../261018-GUIA-OBSERVAR-REMOCAO.md` responde.
 
 ## Arquitetura — pontos-chave
 - Forma A (console) prova; forma B (extensão MV3) empacota o mesmo código; forma D (repetir a requisição interna) só depois, e só observada — ver DEC-002.

@@ -11,6 +11,9 @@ O pedido original: um botão na página do Projeto (ou no ícone da extensão) q
 ---
 
 ## 🤖 Ideias Ativas — Assistente
+### 2026-10-18 — Detectar o layout e recusar no nativo
+Ao rodar, se o modal tiver «Selecionar» (layout novo) ou não for o modal «Arquivos», não fazer nada e dizer qual recurso nativo usar. Entra na F1 (DEC-004).
+
 ### 2026-10-17 — Modo ensaio
 Primeiro comando só lista e conta (nome do Projeto, N arquivos, nomes) sem excluir. Serve de teste diário de que os seletores ainda batem com o layout.
 
@@ -29,6 +32,8 @@ Baixar um `.txt` com os nomes, tamanhos e datas excluídos — recibo do que sai
 ---
 
 ## 🛌 Adiadas
+- **Extensão MV3 (forma B)** — adiada por DEC-004: vida útil limitada ao layout «limbo» — **volta quando** alguma conta do dono passar mais de 30 dias no limbo, ou se outras pessoas pedirem a ferramenta.
+- **Bookmarklet do trecho** — adiado até o trecho estabilizar — **volta quando** o dono rodar o trecho mais de 3 vezes e colar no console virar incômodo (o CSP do site pode bloquear; medir antes).
 - **Forma D — repetir a requisição que a página faz ao excluir** — adiada porque é interface interna não documentada e exige leitura dos termos de uso — **volta quando** A/B quebrarem por layout duas vezes, ou se a exclusão por clique se mostrar lenta demais com 100+ arquivos. Medir só método, caminho e status (captura de tela), nunca HAR.
 - **Publicar na Chrome Web Store** — adiada porque exige ler os termos de uso sobre automação de interface — **volta quando** a extensão estiver estável para o dono por um mês.
 - **Rótulos multilíngues (en/pt-BR)** — adiada até medir se o item Excluir e a confirmação têm âncora sem texto — **volta quando** a análise de seletores mostrar dependência de texto.
@@ -51,4 +56,5 @@ Baixar um `.txt` com os nomes, tamanhos e datas excluídos — recibo do que sai
 - **2026-10-17** O guia de medição do prompt de início pedia «Copiar outerHTML» do menu ⋮ pelo DevTools; menus efêmeros fecham ao focar o DevTools, e o dono não conseguiu. Para medir UI efêmera, o kit deveria entregar um trecho de console que abre, captura e baixa o resultado.
 - **2026-10-17** O prompt de início citava a pasta do kit como `projeto/`, mas ela já estava renomeada para `ClearDrop/`; e o README do kit diz «logs/ — um arquivo por sessão» enquanto o CEREBRO diz um por dia. Pequenas divergências que confundem o primeiro turno.
 - **2026-10-17** O prompt de início não previa conferir se a lacuna da interface continuava existindo antes de medir os detalhes. Medição barata que teria economizado a F0: «o botão em lote voltou?». Vale como primeiro passo padrão em projetos que contornam a interface de terceiros.
+- **2026-10-18** Medir UI efêmera (confirmação) com trecho que roda no instante certo falhou duas vezes; o que funciona é um observador (`MutationObserver`) que roda ANTES da ação manual e registra o que aparecer. Bom padrão para o kit.
 - **2026-10-17** Seção «Feedback para o ASU» removida do IDEAS: este projeto não usa o ASU.

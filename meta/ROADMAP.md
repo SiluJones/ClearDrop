@@ -4,21 +4,22 @@
 
 ---
 
-## 🟡 F0 — Medição *(em curso)*
+## 🟢 F0 — Medição *(concluída 2026-10-18)*
 **Objetivo:** saber como o modal, o menu ⋮ e a confirmação são feitos, antes de escrever qualquer seletor.
 **Critério de conclusão:** análise `meta/analises/` escrita com as três medições e a forma confirmada.
 - [x] outerHTML do modal «Arquivos» (`261017-0707.html`).
 - [x] Menu ⋮ aberto + virtualização com 174 arquivos (trecho 1 do guia).
-- [ ] Caixa de confirmação — não capturada; perdeu prioridade com o recurso nativo.
+- [ ] Caixa de confirmação — não capturada; passa para a F1 (observador).
 - [x] Análise da forma e dos seletores (`meta/analises/261017-ANALISE-forma-e-seletores.md`) — recomenda encerrar se a conta Free tiver «Selecionar».
-- [ ] Conferir a conta gratuita (ponto de decisão).
+- [x] Conta gratuita conferida: sem «Selecionar» → DEC-004.
 
-## 🔵 F1 — Prova no console (forma A)
-**Objetivo:** esvaziar um Projeto descartável colando um trecho no console.
+## 🟡 F1 — Trecho de console para o layout «limbo» (forma A) *(próxima)*
+**Objetivo:** esvaziar um Projeto em layout «limbo» colando um trecho no console; em layout com «Selecionar», recusar e apontar o nativo.
 **Critério de conclusão:** todos os critérios da SPEC passam num Projeto descartável, incluindo uma parada provocada no meio e a retomada.
-- Modo ensaio → excluir 1 cobaia → esvaziar o Projeto inteiro.
+- [ ] Observar uma remoção (confirmação? tempo? aviso?).
+- [ ] Modo ensaio → remover 1 cobaia → esvaziar o Projeto inteiro.
 
-## 🔵 F2 — Extensão MV3 (forma B)
+## 🔵 F2 — Extensão MV3 (forma B) *(condicional: só se o limbo durar — ver IDEAS)*
 **Objetivo:** o mesmo núcleo como extensão carregada sem compactação, com um botão.
 **Critério de conclusão:** o dono esvazia um Projeto real com um clique + confirmação.
 

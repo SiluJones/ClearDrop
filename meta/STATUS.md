@@ -5,21 +5,21 @@
 ---
 
 ## Versão Atual
-**0.0.0** — 2026-10-17 — sem código. F0 (medição) concluída; projeto **em decisão de encerramento**.
+**0.0.0** — 2026-10-18 — sem código. F0 decidida (DEC-004); F1 (trecho de console para o layout «limbo») começando.
 
 ## ✅ Funcionando
-- Medições completas do modal: estrutura, menu ⋮, ausência de virtualização até 174 arquivos (`../261017-*.html/.md`).
-- **Achado central:** o claude.ai devolveu a exclusão em lote (conta Pro, medido em 17/10): «Selecionar» → «Selecionar tudo» → «Excluir N itens selecionados». Ver `meta/analises/261017-ANALISE-forma-e-seletores.md`.
+- Medições do layout «limbo» (conta Free) e do layout novo (conta Pro) — `../referencia/` e a análise `meta/analises/261017-ANALISE-forma-e-seletores.md`.
 
 ## 🔧 Em Progresso
-- **Ponto de decisão da análise:** ver se a conta **gratuita** tem o botão «Selecionar». Aparece → encerrar (dormente). Não aparece → F1 só pelo caminho por linha.
+- **Observar uma remoção na conta Free.** Guia `../261018-GUIA-OBSERVAR-REMOCAO.md` com a cobaia `teste-cleardrop.txt`. Responde: há confirmação? quanto tempo a linha leva para sumir? aparece aviso?
 
 ## ❌ Quebrado / Com Problema
 - Nada.
 
 ## 📋 Backlog (curto prazo — itens acionáveis)
-- [ ] Abrir um Projeto numa conta Free e conferir se «Selecionar» aparece no topo da lista de arquivos.
-- [ ] Registrar a decisão (DEC-004) e marcar DEC-002 conforme o resultado.
+- [ ] Dono roda o observador e traz `free-261018-observa-remocao.md`.
+- [ ] WO da F1: `cleardrop.js` em modo ensaio (detecta layout, lista, conta, confere com o rodapé) + remoção com paradas de segurança.
+- [ ] Ajustar `CLAUDE.md` (validação = rodar o modo ensaio num Projeto descartável) quando o código existir.
 
 ## 💬 Última conversa
-**2026-10-17 (2ª)** — Lidas as medições: o menu ⋮ abre com `.click()`, o item é «Remover do projeto», nada de virtualização até 174. A confirmação não foi capturada. Medido ao vivo no *mapsmith*: o modal virou «Contexto», com modo de seleção e «Excluir 173 itens selecionados» nativo; nada foi excluído. Análise escrita recomendando encerrar, salvo se a conta gratuita não tiver o recurso.
+**2026-10-18** — Conta Free confirmada sem «Selecionar». O dono descreveu três estados de interface entre contas. Decidido seguir só para o «limbo», em trecho de console (DEC-004, supera DEC-002). O trecho 2 antigo foi trocado por um observador que roda antes do clique.

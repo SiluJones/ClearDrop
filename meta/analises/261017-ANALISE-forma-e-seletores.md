@@ -1,6 +1,6 @@
 # ANÁLISE — Forma de automação e seletores do ClearDrop
 
-**Data:** 2026-10-17 · **Status:** Em discussão
+**Data:** 2026-10-17 · **Status:** Decidida (2026-10-18 → DEC-004)
 
 ## Problema
 O ClearDrop nasceu porque o modal de arquivos do Projeto perdeu o «selecionar todos + excluir» (out/2026), e esvaziar 35–173 arquivos virou um clique por arquivo. A F0 existia para medir o modal antes de escolher a forma (DEC-002) e os seletores (DEC-003).
@@ -81,3 +81,6 @@ Para o recurso nativo, se algum dia valer automatizá-lo, as âncoras seriam:
 2. **Com isso:**
    - **Aparece:** encerrar (A + B).
    - **Não aparece:** seguir com a F1 no console, só pelo caminho por linha.
+
+## Desfecho (2026-10-18)
+A conta Free **não** tem «Selecionar» (medido pelo dono em `free-261017-medicao-menu.md`: modal «Arquivos», 36 linhas, menu ⋮ com «Remover do projeto»). O dono relatou três estados de interface entre as suas contas. Decisão: seguir só para o layout «limbo», em trecho de console — DEC-004.

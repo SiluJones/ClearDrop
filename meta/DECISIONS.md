@@ -24,7 +24,7 @@ Os placeholders `[NOME]`/`projeto` do kit viram ClearDrop (README, Instruções,
 ---
 
 ## DEC-002 — Sequência de formas: A prova, B empacota, D depois
-**Data:** 2026-10-17 · **Status:** aceita, revisável após a medição do menu (F0)
+**Data:** 2026-10-17 · **Status:** SUPERADA por DEC-004
 
 ### Contexto
 O dono sugeriu uma extensão; o prompt listou seis formas (A console, B extensão MV3, C userscript, D requisição interna, E Projeto novo, F Claude in Chrome). Nada do menu ⋮ foi medido ainda.
@@ -59,3 +59,25 @@ A medição do modal (`261017-0707.html`) mostrou classes utilitárias (Tailwind
 
 ### Consequências
 O modal se identifica por `[role="dialog"]` que contenha `[data-testid="project-doc-upload"]`; o botão ⋮ de cada linha por `button[aria-haspopup="menu"]:not([data-testid])`. O item Excluir e a confirmação ainda podem exigir texto — a decidir quando medidos.
+
+---
+
+## DEC-004 — Seguir só para o layout «limbo», em trecho de console
+**Data:** 2026-10-18 · **Status:** aceita
+
+### Contexto
+A F0 (`meta/analises/261017-ANALISE-forma-e-seletores.md`) achou a exclusão em lote nativa de volta no plano Pro. O dono confirmou três estados de interface, um por conta:
+1. **Interface antiga** (cartões com seleção em massa): exclusão em lote nativa.
+2. **Layout «limbo»** (modal «Arquivos», sem «Selecionar»): exclusão só arquivo por arquivo. É o estado da conta Free medida.
+3. **Layout novo** (modal «Contexto» com «Selecionar»): exclusão em lote nativa. É o estado das contas pagas.
+
+### Decisão
+O ClearDrop segue **apenas para o layout «limbo»**, pelo caminho por linha (⋮ → «Remover do projeto»), entregue como **trecho de console (forma A)**. Ao abrir, ele detecta o botão «Selecionar»: se existir, não faz nada e manda usar o recurso nativo. A extensão (forma B) só volta se o limbo durar.
+
+### Alternativas consideradas
+- **Encerrar agora** — a conta Free do dono ficaria presa ao clique por arquivo enquanto a migração dela não chega.
+- **Extensão MV3** — custo de empacotar e manter para uma ferramenta cuja vida útil acaba quando a migração terminar.
+- **Automatizar também o recurso nativo** — economiza três cliques; não paga a manutenção.
+
+### Consequências
+O projeto tem prazo de validade embutido: perde a razão de existir quando a última conta sair do limbo. O código precisa ser pequeno, num arquivo só, e falhar alto. A confirmação de remoção ainda não foi medida: o trecho, ao remover, para se aparecer qualquer diálogo inesperado.
