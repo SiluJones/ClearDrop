@@ -1,20 +1,10 @@
 # CHANGELOG
 
-> Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/) e versionamento [SemVer](https://semver.org/lang/pt-BR/).
-> **Cresce**: entradas novas no topo. Registra só o que foi de fato concluído/entregue.
+> Formato [Keep a Changelog](https://keepachangelog.com/pt-BR/) + [SemVer](https://semver.org/lang/pt-BR/). Entradas novas no topo.
 
 ## [Não lançado]
 ### Adicionado
-- [Funcionalidade nova pronta, ainda sem número de versão.]
-
----
-
-## [0.1.0] — AAAA-MM-DD
-### Adicionado
-- [O que entrou.]
+- Documentação de contexto preenchida (CONTEXT, SPEC, STATUS, DECISIONS DEC-001..003, IDEAS, ROADMAP, GLOSSARY, HISTORY) e log de 2026-10-17.
+- Mapeamento do modal «Arquivos» a partir do outerHTML real (CONTEXT, seção crítica).
 ### Modificado
-- [O que mudou em comportamento existente.]
-### Corrigido
-- [Bug corrigido — referência FIX-N se houver.]
-### Removido
-- [O que saiu.]
+- Placeholders do kit trocados por ClearDrop (README, Instruções, CLAUDE.md); `.gitignore` passa a ignorar HAR, `.env` e zips.

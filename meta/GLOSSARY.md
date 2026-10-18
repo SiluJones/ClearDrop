@@ -1,18 +1,29 @@
 # GLOSSARY.md — Termos do Projeto
 
-> **Opcional.** Use quando o projeto tem vocabulário próprio (nomes de módulos, conceitos, identificadores) que o assistente reexplicaria a cada conversa sem isto.
-> Mantenha curto: só o que não é óbvio para alguém de fora.
-
 ---
 
 ## Conceitos do projeto
-- **[Termo]** — [definição em uma linha, no sentido específico deste projeto.]
+- **Projeto** — um Projeto do claude.ai (com Instruções, conversas e arquivos de conhecimento). Não confundir com «o projeto ClearDrop».
+- **Arquivos de conhecimento** — os arquivos anexados ao Projeto, listados no modal «Arquivos». Único alvo do ClearDrop.
+- **Esvaziar** — excluir todos os arquivos de conhecimento do Projeto aberto, e nada mais.
+- **Cobaia** — arquivo descartável (`teste-cleardrop.txt`) usado para testar exclusão sem risco.
+- **Modo ensaio** — execução que lista e conta, sem excluir.
 
-## Arquiteturas / módulos
-- **[Nome do módulo/padrão]** — [o que é, o que faz.]
+## Interface medida (claude.ai)
+- **Modal «Arquivos»** — o diálogo que lista os arquivos do Projeto (nome, tipo, tamanho, data, lupa, Adicionar).
+- **Menu ⋮ / «Mais opções»** — o botão por linha (`aria-label="Mais opções para <arquivo>"`) que abre as ações do arquivo.
+- **CDS / Base UI** — o design system da página e a biblioteca de componentes por baixo; explicam os ids `base-ui-_r_…_` e os atributos `data-cds`.
+- **Casca da página** — o HTML de carregamento que o «código-fonte» mostra; não contém o modal.
+- **DOM renderizado** — a página como está na tela depois do JavaScript; é o que se mede.
+- **Lista virtualizada** — lista que só desenha as linhas visíveis; obriga a rolar para alcançar as demais.
+
+## Formas de solução
+- **Forma A** — trecho no console (DevTools) ou bookmarklet.
+- **Forma B** — extensão do Chrome Manifest V3.
+- **Forma C** — userscript. **D** — repetir a requisição interna. **E** — Projeto novo. **F** — Claude in Chrome clicando.
 
 ## Comandos / artefatos
-- **[comando ou arquivo]** — [para que serve.]
-
-## Identificadores
-- **[Sigla/ID]** — [o que significa no projeto.]
+- **FlatDrop** — ferramenta-irmã: achata o repositório e sobe ao Projeto.
+- **KCM** — Kit de Contexto Universal, que gerou os meta/ e as Instruções.
+- **WO** — ordem de trabalho do chat para o Claude Code (`meta/workorders/AAMMDD-woNNNN-desc.md`), aplicada com `/apply-wo`.
+- **`SELECTORS`** — o objeto único onde moram todos os seletores (DEC-003).

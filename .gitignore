@@ -4,3 +4,11 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
+# Segredos e capturas de rede: HAR e .env carregam cookie/token de sessao.
+*.har
+.env
+.env.*
+# Pacotes gerados da extensao.
+*.zip
+*.crx
+*.pem

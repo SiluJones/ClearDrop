@@ -1,4 +1,4 @@
-# Projeto: [NOME]
+# Projeto: ClearDrop
 Domínio: Desenvolvimento.
 
 > Comportamento detalhado, higiene e gatilhos: **CEREBRO.md**.

@@ -1,4 +1,4 @@
-# projeto — projeto de contexto (Desenvolvimento)
+# ClearDrop — projeto de contexto (Desenvolvimento)
 
 Estrutura de arranque gerada pelo Kit de Contexto Universal v1.126.0.
 Data: 2026-10-17

@@ -1,21 +1,15 @@
 # HISTORY.md — Conhecimento Consolidado
 
-> **Opcional.** Arquivo-baú para conhecimento denso que já foi aprendido e não muda mais — guias técnicos, análises de viabilidade, notas de migração — que tornariam o CONTEXT pesado demais.
-> Não é lido no início da conversa; o assistente consulta sob demanda quando o assunto aparece.
+> Lido sob demanda. Guarda o que já foi aprendido e não muda mais.
 
 ---
 
-## 1. [Guia técnico consolidado]
-[Conteúdo de referência que já é estável. Ex: «como inspecionar um site novo», «como configurar o ambiente do zero».]
+## 1. Como medir uma interface desenhada por JavaScript (2026-10-17)
+- **O que não funciona:** «Exibir código-fonte» (Ctrl+U) e «Salvar página» (Ctrl+S) devolvem a **casca** do app — compositor e scripts de boot. No claude.ai, nenhum rótulo de excluir, nenhuma linha de arquivo. Dois arquivos assim foram gerados no primeiro dia (`261016-1524.txt`, `261017-0702.txt`, hoje em `../referencia/`).
+- **O que funciona para elementos estáveis:** DevTools → botão direito no elemento → *Copiar* → *Copiar outerHTML*, com o elemento aberto na tela. Assim saiu o `261017-0707.html` (modal «Arquivos»).
+- **O que funciona para elementos efêmeros** (menu ⋮, popover, tooltip): um trecho de console que abre o elemento, captura `outerHTML`, fecha e baixa o resultado como arquivo. Clicar no DevTools tira o foco da página e o menu fecha antes de ser copiado. Modelo: `../261017-GUIA-MEDIR-MENU.md`.
+- **Chrome bloqueia colar no console na primeira vez:** digitar `permitir colar` (ou `allow pasting`).
+- **Rede:** para estudar a requisição de uma ação, só método, caminho e status em captura de tela. HAR e cabeçalhos carregam cookie e token — nunca na pasta.
 
-## 2. [Análise/decisão histórica]
-[Notas de uma fase encerrada que ainda têm valor de consulta.]
-
-## 3. [Procedimento herdado]
-[Passo a passo que raramente muda.]
-
-## 4. [Pesquisa de convenções]
-[O que foi investigado antes de adotar um padrão externo (nome, formato, biblioteca) e o que se decidiu a partir dela. Registra o que JÁ foi pesquisado — é o que impede alguém pesquisar de novo em seis meses.]
-
-## 5. [Autópsia de um problema resolvido]
-[Sintoma → causa raiz → correção → como evitar de novo. Vale sobretudo quando o sintoma apareceu longe da causa.]
+## 2. O caso de origem (2026-10-17)
+Até out/2026 o painel «Contexto» do Projeto tinha caixa de seleção por arquivo, «N selecionado» e uma lixeira que apagava todos (captura `Captura de tela 2026-09-30 161640.png`). A atualização de layout trocou isso pelo modal «Arquivos» com menu ⋮ por linha e sem ação em lote, também nas contas gratuitas (`Captura de tela 2026-10-16 152405.png`, 38 arquivos, conta Free). O dono mandou feedback à Anthropic, sem resposta. O prompt de início completo está em `../notas-arquivadas/261017-PROMPT-DE-INICIO.md`.
