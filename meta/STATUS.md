@@ -5,24 +5,21 @@
 ---
 
 ## Versão Atual
-**0.0.0** — 2026-10-17 — contexto preenchido; nenhum código ainda. Fase F0 (medição).
+**0.0.0** — 2026-10-17 — sem código. F0 (medição) concluída; projeto **em decisão de encerramento**.
 
 ## ✅ Funcionando
-- Kit de contexto preenchido (meta/) e repositório no GitHub (`origin/main`).
-- Medição 1 feita: outerHTML do modal «Arquivos» (`../261017-0707.html`) — estrutura, linhas e botões ⋮ mapeados no CONTEXT.
+- Medições completas do modal: estrutura, menu ⋮, ausência de virtualização até 174 arquivos (`../261017-*.html/.md`).
+- **Achado central:** o claude.ai devolveu a exclusão em lote (conta Pro, medido em 17/10): «Selecionar» → «Selecionar tudo» → «Excluir N itens selecionados». Ver `meta/analises/261017-ANALISE-forma-e-seletores.md`.
 
 ## 🔧 Em Progresso
-- **F0 — medição do menu e da confirmação.** Guia pronto em `../261017-GUIA-MEDIR-MENU.md`; aguardando o dono rodar os dois trechos e trazer `261017-medicao-menu.md` e `261017-medicao-confirmacao.md` para a pasta-pai.
+- **Ponto de decisão da análise:** ver se a conta **gratuita** tem o botão «Selecionar». Aparece → encerrar (dormente). Não aparece → F1 só pelo caminho por linha.
 
 ## ❌ Quebrado / Com Problema
 - Nada.
 
 ## 📋 Backlog (curto prazo — itens acionáveis)
-- [ ] Rodar o trecho 1 do guia num Projeto grande (123 arquivos): menu ⋮ + virtualização.
-- [ ] Rodar o trecho 2 com o arquivo-cobaia `teste-cleardrop.txt`: existe confirmação? como é?
-- [ ] Escrever `meta/analises/AAMMDD-ANALISE-forma-e-seletores.md` com as medições (forma A→B confirmada ou não; seletores; riscos).
-- [ ] Trecho de console em modo ensaio (lista e conta, não exclui).
-- [ ] Ajustar `CLAUDE.md` (comando de validação) quando existir código.
+- [ ] Abrir um Projeto numa conta Free e conferir se «Selecionar» aparece no topo da lista de arquivos.
+- [ ] Registrar a decisão (DEC-004) e marcar DEC-002 conforme o resultado.
 
 ## 💬 Última conversa
-**2026-10-17** — Lido o prompt de início; medido o `261017-0707.html` (35 linhas, rodapé «35 arquivos», botões `Mais opções para <arquivo>`, sem virtualização em 35). Identificado por que o guia original falhou (casca da página; menu fecha ao focar o DevTools) e escrito um guia com trechos de console só-leitura. Meta/ preenchidos. Próximo: o dono roda o guia; depois, a análise da forma.
+**2026-10-17 (2ª)** — Lidas as medições: o menu ⋮ abre com `.click()`, o item é «Remover do projeto», nada de virtualização até 174. A confirmação não foi capturada. Medido ao vivo no *mapsmith*: o modal virou «Contexto», com modo de seleção e «Excluir 173 itens selecionados» nativo; nada foi excluído. Análise escrita recomendando encerrar, salvo se a conta gratuita não tiver o recurso.

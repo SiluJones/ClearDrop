@@ -8,9 +8,10 @@
 **Objetivo:** saber como o modal, o menu ⋮ e a confirmação são feitos, antes de escrever qualquer seletor.
 **Critério de conclusão:** análise `meta/analises/` escrita com as três medições e a forma confirmada.
 - [x] outerHTML do modal «Arquivos» (`261017-0707.html`).
-- [ ] Menu ⋮ aberto + virtualização com 123 arquivos (trecho 1 do guia).
-- [ ] Caixa de confirmação (trecho 2, arquivo-cobaia).
-- [ ] Análise da forma e dos seletores.
+- [x] Menu ⋮ aberto + virtualização com 174 arquivos (trecho 1 do guia).
+- [ ] Caixa de confirmação — não capturada; perdeu prioridade com o recurso nativo.
+- [x] Análise da forma e dos seletores (`meta/analises/261017-ANALISE-forma-e-seletores.md`) — recomenda encerrar se a conta Free tiver «Selecionar».
+- [ ] Conferir a conta gratuita (ponto de decisão).
 
 ## 🔵 F1 — Prova no console (forma A)
 **Objetivo:** esvaziar um Projeto descartável colando um trecho no console.

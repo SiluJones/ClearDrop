@@ -50,4 +50,5 @@ Baixar um `.txt` com os nomes, tamanhos e datas excluídos — recibo do que sai
 ## 📮 Feedback para o Kit
 - **2026-10-17** O guia de medição do prompt de início pedia «Copiar outerHTML» do menu ⋮ pelo DevTools; menus efêmeros fecham ao focar o DevTools, e o dono não conseguiu. Para medir UI efêmera, o kit deveria entregar um trecho de console que abre, captura e baixa o resultado.
 - **2026-10-17** O prompt de início citava a pasta do kit como `projeto/`, mas ela já estava renomeada para `ClearDrop/`; e o README do kit diz «logs/ — um arquivo por sessão» enquanto o CEREBRO diz um por dia. Pequenas divergências que confundem o primeiro turno.
+- **2026-10-17** O prompt de início não previa conferir se a lacuna da interface continuava existindo antes de medir os detalhes. Medição barata que teria economizado a F0: «o botão em lote voltou?». Vale como primeiro passo padrão em projetos que contornam a interface de terceiros.
 - **2026-10-17** Seção «Feedback para o ASU» removida do IDEAS: este projeto não usa o ASU.

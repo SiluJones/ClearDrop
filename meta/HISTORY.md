@@ -13,3 +13,6 @@
 
 ## 2. O caso de origem (2026-10-17)
 Até out/2026 o painel «Contexto» do Projeto tinha caixa de seleção por arquivo, «N selecionado» e uma lixeira que apagava todos (captura `Captura de tela 2026-09-30 161640.png`). A atualização de layout trocou isso pelo modal «Arquivos» com menu ⋮ por linha e sem ação em lote, também nas contas gratuitas (`Captura de tela 2026-10-16 152405.png`, 38 arquivos, conta Free). O dono mandou feedback à Anthropic, sem resposta. O prompt de início completo está em `../notas-arquivadas/261017-PROMPT-DE-INICIO.md`.
+
+## 3. A exclusão em lote voltou no mesmo dia (2026-10-17)
+De manhã, o modal «Arquivos» (35 arquivos) não tinha seleção. À noite, no Projeto *mapsmith* (conta Pro, 173 arquivos), o modal se chamava «Contexto» e tinha «Selecionar» → «Selecionar tudo» → «Excluir N itens selecionados». A F0 terminou provando que o problema de origem tinha sido resolvido pela própria Anthropic, ao menos no plano Pro. Lição: em ferramenta que contorna uma lacuna da interface de outro, a primeira medição de cada sessão é «a lacuna ainda existe?».

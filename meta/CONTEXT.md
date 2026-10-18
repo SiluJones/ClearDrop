@@ -42,7 +42,9 @@ Medido em 2026-10-17 sobre `261017-0707.html` (outerHTML real, Projeto com 35 ar
 - **Cada linha:** um `div` com um `button` cobrindo a linha (`aria-label` = nome do arquivo com extensão, ex. `CEREBRO.md`), o nome exibido, um `<time datetime="...">`, e o botão do menu.
 - **Menu por linha:** `button[aria-haspopup="menu"]` com `aria-label="Mais opções para <arquivo>"` e `aria-expanded`. Há **um a mais** no modal: o do Adicionar — excluí-lo por `:not([data-testid])`.
 - **Contagem de referência:** o rodapé diz «35 arquivos · 8% da capacidade do projeto usada» (há um `role="meter"` com `aria-valuenow`). Com 35, havia 35 linhas no DOM: **sem virtualização nesse tamanho**. Com 123, ainda não medido.
-- **Ainda não medido:** o conteúdo do menu ⋮ (rótulo e papel do item Excluir), se existe caixa de confirmação e como ela é, se `.click()` abre o menu ou se é preciso a sequência de eventos de ponteiro. Guia: `../261017-GUIA-MEDIR-MENU.md`.
+- **Menu ⋮ (medido em 17/10, 174 arquivos):** abre com `.click()`; `[role="menu"]` com **um único** `[role="menuitem"]`, «Remover do projeto»; o Escape fecha. A lista rola, mas **não é virtualizada** até 174.
+- **Layout novo, à noite de 17/10, conta Pro:** o título virou «Contexto», há `role="region"` «Arquivos de contexto» e um botão **«Selecionar»** (`aria-pressed`). Com ele ligado aparecem a caixa «Selecionar tudo» (primeiro `role="checkbox"`), uma caixa por linha, «N selecionado» e `button[aria-label^="Excluir"]` («Excluir 173 itens selecionados»). **A exclusão em lote nativa voltou** — ver a análise `meta/analises/261017-ANALISE-forma-e-seletores.md`.
+- **Não medido:** se a conta gratuita tem «Selecionar»; se a exclusão (por linha ou em lote) pede confirmação.
 
 ## Arquitetura — pontos-chave
 - Forma A (console) prova; forma B (extensão MV3) empacota o mesmo código; forma D (repetir a requisição interna) só depois, e só observada — ver DEC-002.
@@ -57,6 +59,7 @@ Medido em 2026-10-17 sobre `261017-0707.html` (outerHTML real, Projeto com 35 ar
 5. **Esperar tempo fixo** entre cliques — animação e render variam. → Esperar o elemento existir (com teto) e falhar alto ao estourar.
 6. **Testar exclusão em Projeto real** — é irreversível. → Projeto descartável com arquivos-cobaia.
 7. **Salvar HAR ou cabeçalhos** da aba Rede na pasta — carregam cookie e token. → Só método, caminho e status, em captura de tela.
+8. **Esperar «Excluir» no menu** — o item se chama «Remover do projeto», e o layout muda sem aviso (dois layouts num mesmo dia). → Medir de novo antes de codar, nunca seletor de memória.
 
 ## 📁 Arquivos Críticos (não mexer sem contexto)
 - `../261017-0707.html` — a única medição real do modal; base de todos os seletores atuais.
