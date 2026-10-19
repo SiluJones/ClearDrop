@@ -18,7 +18,7 @@
 **Critério de conclusão:** todos os critérios da SPEC passam num Projeto descartável, incluindo uma parada provocada no meio e a retomada.
 - [x] Observar uma remoção: sem confirmação, linha some em ~1,3 s, recarga com spinner.
 - [x] `src/cleardrop.js` + testes jsdom (8/8) — wo0001.
-- [ ] Roteiro manual na conta Free: ensaio → esvaziar um Projeto descartável.
+- [ ] Roteiro manual na conta Free: ensaio e cancelamento ok (19/10); esvaziar falhou no 0.1.0 (FIX-001) — repetir com o 0.1.1.
 
 ## 🔵 F2 — Extensão MV3 (forma B) *(condicional: só se o limbo durar — ver IDEAS)*
 **Objetivo:** o mesmo núcleo como extensão carregada sem compactação, com um botão.

@@ -2,12 +2,15 @@
  * Testes do src/cleardrop.js num DOM simulado (jsdom), montado sobre o outerHTML REAL do modal
  * «Arquivos» do layout «limbo» (medido em 2026-10-17; classes, estilos e SVG removidos).
  * Um "site" simulado reage aos cliques como o medido em 2026-10-18: menu ⋮ com um item,
- * remoção sem confirmação e recarga da lista com spinner. Rodar: npm test.
+ * remoção sem confirmação e recarga da lista com spinner. O menu é o outerHTML MEDIDO
+ * (tests/fixtures/menu-limbo.html), com o glifo do ícone — menu escrito à mão escondeu o FIX-001.
+ * Rodar: npm test.
  */
 const { JSDOM } = require('jsdom');
 const fs = require('fs');
 const path = require('path');
 const MODAL = fs.readFileSync(path.join(__dirname, 'fixtures', 'modal-limbo.html'), 'utf8');
+const MENU = fs.readFileSync(path.join(__dirname, 'fixtures', 'menu-limbo.html'), 'utf8');
 const SCRIPT = fs.readFileSync(path.join(__dirname, '..', 'src', 'cleardrop.js'), 'utf8');
 
 /** Monta uma página de Projeto com o modal real e um "site" simulado que reage aos cliques. */
@@ -25,14 +28,15 @@ function page({ menuLabel = 'Remover do projeto', confirmDialog = false, nativeS
   const walker = d.createTreeWalker(modal, w.NodeFilter.SHOW_TEXT);
   let footerEl = null; while (walker.nextNode()) if (/^\d+ arquivos$/.test(walker.currentNode.nodeValue.trim())) { footerEl = walker.currentNode; break; }
   if (!footerEl) throw new Error('fixture sem rodape');
-  if (nativeSelect) { const b = d.createElement('button'); b.setAttribute('aria-pressed', 'false'); b.textContent = 'Selecionar'; modal.prepend(b); }
+  // Botão «Selecionar» do layout novo, com um ícone aria-hidden como os do site.
+  if (nativeSelect) { const b = d.createElement('button'); b.setAttribute('aria-pressed', 'false'); b.innerHTML = '<span aria-hidden="true">\ue0b3</span><span>Selecionar</span>'; modal.prepend(b); }
   if (dropRow) { const t = modal.querySelector('button[aria-haspopup="menu"]:not([data-testid])'); let r = t; while (!r.querySelector('time')) r = r.parentElement; r.remove(); }
   // "Site": abre menu no ⋮; remove a linha no item; recarrega a lista com spinner.
   d.addEventListener('click', (ev) => {
     const trig = ev.target.closest('button[aria-haspopup="menu"]:not([data-testid])');
     if (trig) {
-      const m = d.createElement('div'); m.setAttribute('role', 'menu'); m.setAttribute('data-open', '');
-      const it = d.createElement('div'); it.setAttribute('role', 'menuitem'); it.textContent = menuLabel; m.appendChild(it);
+      const holder = d.createElement('div'); holder.innerHTML = MENU; const m = holder.firstElementChild;
+      m.querySelector('[role="menuitem"] > span:last-child').textContent = menuLabel; // só o rótulo; o ícone fica
       m._row = trig; d.body.appendChild(m); return;
     }
     const item = ev.target.closest('[role="menuitem"]');
@@ -60,6 +64,9 @@ const check = (name, ok, extra = '') => { console.log(`${ok ? 'OK  ' : 'FALHA'} 
   { const p = page(); const names = p.w.ClearDrop.scan();
     check('1 scan lista os 35 arquivos', names && names.length === 35, names && `${names.length}; 1º=${names[0]}; último=${names[34]}`);
     check('1 scan nao remove nada', p.rows() === 35 && p.log.alerts.length === 0); }
+  // 1b. FIX-001: o item real traz o glifo U+E101 antes do rótulo; tem de ser aceito.
+  { const p = page(); const item = (() => { const h = p.d.createElement('div'); h.innerHTML = MENU; return h.querySelector('[role="menuitem"]'); })();
+    check('1b fixture do menu tem o glifo do icone', item.textContent.startsWith('\ue101'), JSON.stringify(item.textContent)); }
   // 2. Layout com «Selecionar»: recusa.
   { const p = page({ nativeSelect: true }); const r = p.w.ClearDrop.scan();
     check('2 recusa no layout nativo', r === null && /Selecionar/.test(p.log.alerts[0] || ''), (p.log.alerts[0] || '').split('\n')[0]); }

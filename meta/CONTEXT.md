@@ -69,6 +69,7 @@ Medido em 2026-10-17 sobre `261017-0707.html` (outerHTML real, Projeto com 35 ar
 6. **Testar exclusão em Projeto real** — é irreversível. → Projeto descartável com arquivos-cobaia.
 7. **Salvar HAR ou cabeçalhos** da aba Rede na pasta — carregam cookie e token. → Só método, caminho e status, em captura de tela.
 8. **Esperar «Excluir» no menu** — o item se chama «Remover do projeto», e o layout muda sem aviso (dois layouts num mesmo dia). → Medir de novo antes de codar, nunca seletor de memória.
+9. **Comparar `textContent` de botão ou item de menu** — os ícones do site são glifos de fonte de uso privado dentro de `aria-hidden` (ex.: `U+E101` antes de «Remover do projeto»), invisíveis no console e no alerta. → Ler o rótulo sem o `aria-hidden` (`visibleLabel`) e montar fixture de teste a partir do outerHTML medido — FIX-001.
 
 ## 📁 Arquivos Críticos (não mexer sem contexto)
 - `../261017-0707.html` — a única medição real do modal; base de todos os seletores atuais.

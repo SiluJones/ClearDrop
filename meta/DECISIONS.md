@@ -102,3 +102,13 @@ O trecho remove arquivos sem confirmação do site, e testar no claude.ai é irr
 
 ### Consequências
 O teste prova a lógica contra a estrutura medida, não contra o site vivo: mudança de layout só aparece no roteiro manual ou no uso. O fixture precisa ser regenerado quando o layout limbo mudar.
+
+---
+
+## FIX-001 — Item «Remover do projeto» recusado por causa do glifo do ícone
+**Data:** 2026-10-19
+
+- **Sintoma:** no primeiro uso real (conta Free, Projeto «Canção», 7 arquivos), `run()` parou no primeiro arquivo com «O menu de «X» não é o esperado: «Remover do projeto»» — o rótulo exibido era o esperado. Nada foi removido.
+- **Causa raiz:** o item de menu traz, antes do texto, um `<span data-cds="Icon" aria-hidden="true">` cujo conteúdo é o glifo de fonte `U+E101` (uso privado, invisível no console). O código comparava `textContent.trim()`, que inclui o glifo. O byte estava na medição de 17/10 (`EE 84 81` antes de «Remover»), mas o teste usava um menu escrito à mão, sem ícone, e passou.
+- **Solução:** `visibleLabel()` lê só o texto fora de `[aria-hidden="true"]` e remove caracteres de uso privado soltos; usada no item do menu e no botão «Selecionar». O teste passa a montar o menu a partir do outerHTML MEDIDO (`tests/fixtures/menu-limbo.html`, com o glifo). Contraprova: o código antigo com o fixture novo falha com a mesma mensagem do uso real.
+- **Lição:** fixture de teste sai da medição, nunca de memória; texto de controle se compara pelo rótulo acessível, não por `textContent`. Virou a armadilha 9 do CONTEXT.

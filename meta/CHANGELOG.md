@@ -3,6 +3,9 @@
 > Formato [Keep a Changelog](https://keepachangelog.com/pt-BR/) + [SemVer](https://semver.org/lang/pt-BR/). Entradas novas no topo.
 
 ## [Não lançado]
+### Corrigido
+- 0.1.1: o item «Remover do projeto» era recusado por causa do glifo do ícone (`U+E101`) no texto do menu; rótulos agora são lidos sem o que é `aria-hidden` — FIX-001.
+- Testes montam o menu a partir do outerHTML medido (`tests/fixtures/menu-limbo.html`) e cobrem o glifo (caso 1b).
 ### Adicionado
 - `src/cleardrop.js` 0.1.0: `scan()` (ensaio), `run()` (remoção com confirmação digitada, paradas de segurança, retomada) e `stop()`; recusa no layout com «Selecionar».
 - `tests/cleardrop.test.js` + fixture do modal real; `npm test` com jsdom (DEC-005).

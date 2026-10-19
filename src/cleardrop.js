@@ -1,5 +1,5 @@
 /**
- * ClearDrop 0.1.0 — esvazia os arquivos de conhecimento do Projeto aberto no claude.ai.
+ * ClearDrop 0.1.1 — esvazia os arquivos de conhecimento do Projeto aberto no claude.ai.
  *
  * Alvo: o layout «limbo» (modal «Arquivos» SEM o botão «Selecionar»). No layout com
  * «Selecionar», a exclusão em lote é nativa e o ClearDrop se recusa a rodar (DEC-004).
@@ -66,6 +66,20 @@
     return null;
   }
 
+  /**
+   * Rótulo como a pessoa lê: ignora o que é aria-hidden (os ícones do site são glifos de
+   * fonte, ex. U+E101 antes de «Remover do projeto») e, por garantia, caracteres de uso
+   * privado soltos. Comparar textContent cru foi o FIX-001.
+   */
+  function visibleLabel(element) {
+    let text = '';
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      if (!walker.currentNode.parentElement.closest('[aria-hidden="true"]')) text += walker.currentNode.nodeValue;
+    }
+    return text.replace(/[\uE000-\uF8FF]/g, '').replace(/\s+/g, ' ').trim();
+  }
+
   /** O modal de arquivos é o diálogo que contém o botão de upload do Projeto. */
   function findModal() {
     return [...document.querySelectorAll(SELECTORS.filesModal)]
@@ -76,7 +90,7 @@
   function hasNativeBulk(modal) {
     if (modal.querySelector(SELECTORS.nativeRegion)) return true;
     return [...modal.querySelectorAll(SELECTORS.nativeSelectToggle)]
-      .some((button) => LABELS.nativeSelect.includes(button.textContent.trim()));
+      .some((button) => LABELS.nativeSelect.includes(visibleLabel(button)));
   }
 
   /** Nome do Projeto, tirado do título da aba («mapsmith - Claude» → «mapsmith»). */
@@ -187,7 +201,7 @@
     const menu = await waitFor(() => document.querySelector(SELECTORS.openMenu), TIMING.menuMs);
     if (!menu) fail(`O menu de «${name}» não abriu em ${TIMING.menuMs} ms.`);
     const items = [...menu.querySelectorAll(SELECTORS.menuItem)];
-    const labels = items.map((item) => item.textContent.trim());
+    const labels = items.map(visibleLabel);
     if (items.length !== 1 || !LABELS.removeItem.includes(labels[0])) {
       closeMenu(menu);
       fail(`O menu de «${name}» não é o esperado: ${labels.map((l) => `«${l}»`).join(', ') || 'sem itens'}.`);
@@ -263,6 +277,6 @@
     console.log('ClearDrop: vai parar depois do arquivo da vez.');
   }
 
-  window.ClearDrop = { version: '0.1.0', scan, run, stop, SELECTORS, LABELS, TIMING };
-  console.log('ClearDrop 0.1.0 carregado. ClearDrop.scan() = ensaio · ClearDrop.run() = remover tudo · ClearDrop.stop() = parar.');
+  window.ClearDrop = { version: '0.1.1', scan, run, stop, SELECTORS, LABELS, TIMING };
+  console.log('ClearDrop 0.1.1 carregado. ClearDrop.scan() = ensaio · ClearDrop.run() = remover tudo · ClearDrop.stop() = parar.');
 })();

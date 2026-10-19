@@ -5,26 +5,22 @@
 ---
 
 ## Versão Atual
-**0.1.0 (não lançada)** — 2026-10-18 — `src/cleardrop.js` escrito e testado em jsdom (8/8); falta o roteiro manual na conta Free.
+**0.1.1 (não lançada)** — 2026-10-19 — corrige o primeiro uso real (FIX-001); falta repetir o item 4 do roteiro.
 
 ## ✅ Funcionando
-- `src/cleardrop.js`:
-  - `scan()` — ensaio;
-  - `run()` — remoção com confirmação digitada;
-  - `stop()`;
-  - recusa no layout com «Selecionar».
-- `npm test`: 8 casos sobre o modal real — ensaio, recusa, rodapé divergente, esvaziamento completo, confirmação errada, menu inesperado, diálogo inesperado, parada e retomada.
+- `src/cleardrop.js` 0.1.0 versionado (`a9cbfe2`), `npm test` verde na máquina do dono.
+- Roteiro na conta Free: itens 1 a 3 ok — carregar, `scan()` e cancelamento por nome errado.
 
 ## 🔧 Em Progresso
-- **WO `meta/workorders/261018-wo0001-f1-cleardrop-console.md`:** o Code confere os hashes, instala o jsdom, liga `npm test` ao CLAUDE.md e às permissões, roda os testes e commita.
+- **wo0002** (`meta/workorders/261019-wo0002-fix-001-rotulo-com-icone.md`): versionar o 0.1.1 — `visibleLabel()`, fixture do menu medido, caso 1b.
 
 ## ❌ Quebrado / Com Problema
-- Nada conhecido.
+- **0.1.0 não remove nada no site real** (FIX-001; corrigido no 0.1.1, ainda não versionado nem testado no site).
 
 ## 📋 Backlog (curto prazo — itens acionáveis)
-- [ ] Aplicar a wo0001 no Code.
-- [ ] Roteiro manual na conta Free: ensaio, depois esvaziar um Projeto descartável.
-- [ ] README com o uso, depois do roteiro (prints: a tabela do `scan()` e o aviso final do `run()`).
+- [ ] Aplicar a wo0002 no Code.
+- [ ] Repetir o item 4 do roteiro na conta Free com o 0.1.1 (Projeto «Canção», 6 arquivos).
+- [ ] README com o uso, depois do item 4 (prints: a tabela do `scan()` e o aviso final do `run()`).
 
 ## 💬 Última conversa
-**2026-10-18 (2ª)** — Observador mostrou que «Remover do projeto» não confirma e que a lista recarrega com spinner. Escritos `src/cleardrop.js`, os testes em jsdom e o fixture; 8/8 verdes aqui. Gravados no repo com hashes conferidos; WO para o Code versionar.
+**2026-10-19** — wo0001 aplicada (`a9cbfe2`, 10 OK). No site real, `run()` recusou o item «Remover do projeto» porque o texto traz o glifo `U+E101` do ícone (FIX-001). Corrigido com `visibleLabel()`; teste passou a usar o menu medido; o código antigo reproduz a falha, o novo passa (11 OK).
