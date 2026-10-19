@@ -12,3 +12,5 @@ Thumbs.db
 *.zip
 *.crx
 *.pem
+# Dependencias de desenvolvimento (jsdom, so para os testes).
+node_modules/

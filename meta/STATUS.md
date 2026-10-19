@@ -5,21 +5,26 @@
 ---
 
 ## Versão Atual
-**0.0.0** — 2026-10-18 — sem código. F0 decidida (DEC-004); F1 (trecho de console para o layout «limbo») começando.
+**0.1.0 (não lançada)** — 2026-10-18 — `src/cleardrop.js` escrito e testado em jsdom (8/8); falta o roteiro manual na conta Free.
 
 ## ✅ Funcionando
-- Medições do layout «limbo» (conta Free) e do layout novo (conta Pro) — `../referencia/` e a análise `meta/analises/261017-ANALISE-forma-e-seletores.md`.
+- `src/cleardrop.js`:
+  - `scan()` — ensaio;
+  - `run()` — remoção com confirmação digitada;
+  - `stop()`;
+  - recusa no layout com «Selecionar».
+- `npm test`: 8 casos sobre o modal real — ensaio, recusa, rodapé divergente, esvaziamento completo, confirmação errada, menu inesperado, diálogo inesperado, parada e retomada.
 
 ## 🔧 Em Progresso
-- **Observar uma remoção na conta Free.** Guia `../261018-GUIA-OBSERVAR-REMOCAO.md` com a cobaia `teste-cleardrop.txt`. Responde: há confirmação? quanto tempo a linha leva para sumir? aparece aviso?
+- **WO `meta/workorders/261018-wo0001-f1-cleardrop-console.md`:** o Code confere os hashes, instala o jsdom, liga `npm test` ao CLAUDE.md e às permissões, roda os testes e commita.
 
 ## ❌ Quebrado / Com Problema
-- Nada.
+- Nada conhecido.
 
 ## 📋 Backlog (curto prazo — itens acionáveis)
-- [ ] Dono roda o observador e traz `free-261018-observa-remocao.md`.
-- [ ] WO da F1: `cleardrop.js` em modo ensaio (detecta layout, lista, conta, confere com o rodapé) + remoção com paradas de segurança.
-- [ ] Ajustar `CLAUDE.md` (validação = rodar o modo ensaio num Projeto descartável) quando o código existir.
+- [ ] Aplicar a wo0001 no Code.
+- [ ] Roteiro manual na conta Free: ensaio, depois esvaziar um Projeto descartável.
+- [ ] README com o uso, depois do roteiro (prints: a tabela do `scan()` e o aviso final do `run()`).
 
 ## 💬 Última conversa
-**2026-10-18** — Conta Free confirmada sem «Selecionar». O dono descreveu três estados de interface entre contas. Decidido seguir só para o «limbo», em trecho de console (DEC-004, supera DEC-002). O trecho 2 antigo foi trocado por um observador que roda antes do clique.
+**2026-10-18 (2ª)** — Observador mostrou que «Remover do projeto» não confirma e que a lista recarrega com spinner. Escritos `src/cleardrop.js`, os testes em jsdom e o fixture; 8/8 verdes aqui. Gravados no repo com hashes conferidos; WO para o Code versionar.

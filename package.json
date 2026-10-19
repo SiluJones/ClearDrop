@@ -1,0 +1,12 @@
+{
+  "name": "cleardrop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Esvazia os arquivos de conhecimento de um Projeto do claude.ai no layout sem exclusao em lote.",
+  "scripts": {
+    "test": "node tests/cleardrop.test.js"
+  },
+  "devDependencies": {
+    "jsdom": "24.1.3"
+  }
+}

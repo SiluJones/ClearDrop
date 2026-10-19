@@ -16,8 +16,9 @@
 ## 🟡 F1 — Trecho de console para o layout «limbo» (forma A) *(próxima)*
 **Objetivo:** esvaziar um Projeto em layout «limbo» colando um trecho no console; em layout com «Selecionar», recusar e apontar o nativo.
 **Critério de conclusão:** todos os critérios da SPEC passam num Projeto descartável, incluindo uma parada provocada no meio e a retomada.
-- [ ] Observar uma remoção (confirmação? tempo? aviso?).
-- [ ] Modo ensaio → remover 1 cobaia → esvaziar o Projeto inteiro.
+- [x] Observar uma remoção: sem confirmação, linha some em ~1,3 s, recarga com spinner.
+- [x] `src/cleardrop.js` + testes jsdom (8/8) — wo0001.
+- [ ] Roteiro manual na conta Free: ensaio → esvaziar um Projeto descartável.
 
 ## 🔵 F2 — Extensão MV3 (forma B) *(condicional: só se o limbo durar — ver IDEAS)*
 **Objetivo:** o mesmo núcleo como extensão carregada sem compactação, com um botão.

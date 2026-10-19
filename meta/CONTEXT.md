@@ -13,7 +13,7 @@ ClearDrop é uma ferramenta de navegador que **exclui de uma vez todos — e ape
 - **Linguagem:** JavaScript vanilla, sem dependência e sem build.
 - **Entrega planejada:** primeiro trecho de console (forma A, prova); depois extensão do Chrome Manifest V3 carregada sem compactação (forma B). Ver DEC-002.
 - **Persistência:** nenhuma. Nada sai do navegador.
-- **Testes:** manuais, num Projeto descartável com arquivos-cobaia (não há harness ainda).
+- **Testes:** `npm test` — jsdom sobre o outerHTML real do modal, com um "site" simulado (DEC-005); depois, roteiro manual num Projeto descartável da conta Free.
 - **Deploy:** nenhum — arquivo único / pasta da extensão distribuídos pelo dono.
 
 ## Estrutura do Projeto
@@ -28,7 +28,7 @@ ClearDrop/                      # pasta-pai, FORA do Git: notas, medições, cap
     ├── meta/                   # contexto (CEREBRO, CONTEXT, STATUS...); workorders/; analises/ nasce no 1º uso
     └── logs/                   # diário, um arquivo por dia
 ```
-O código (`src/` ou `extension/`) ainda não existe: nasce na F1.
+O código da F1: `src/cleardrop.js` (o trecho de console, arquivo único, sem dependência) e `tests/` (jsdom sobre o modal real em `tests/fixtures/modal-limbo.html`; `npm test`). O jsdom é só de desenvolvimento — DEC-005.
 
 ## Convenções de Código
 - **Nomes:** arquivos, funções e variáveis em inglês, camelCase.
@@ -50,7 +50,10 @@ Medido em 2026-10-17 sobre `261017-0707.html` (outerHTML real, Projeto com 35 ar
   - **antigo:** cartões com seleção em massa nativa;
   - **«limbo»:** modal «Arquivos», sem «Selecionar»; é o alvo; medido numa conta Free, com 36 linhas e o mesmo menu ⋮ «Remover do projeto»;
   - **novo:** modal «Contexto» com «Selecionar».
-- **Não medido:** se «Remover do projeto» pede confirmação; o observador `../261018-GUIA-OBSERVAR-REMOCAO.md` responde.
+- **Remoção (medida na conta Free em 18/10):**
+  - **«Remover do projeto» não pede confirmação:** a linha some ~1,3 s depois de o menu abrir, sem diálogo. A confirmação digitada do ClearDrop é a única proteção.
+  - **A lista recarrega ~2 s depois:** aparece um `[role="status"]` com spinner («Carregando...»). É preciso esperar ele sumir antes de conferir.
+  - **O menu pode aparecer duas vezes no mesmo instante:** usar só o aberto, `[role="menu"][data-open]`.
 
 ## Arquitetura — pontos-chave
 - Forma A (console) prova; forma B (extensão MV3) empacota o mesmo código; forma D (repetir a requisição interna) só depois, e só observada — ver DEC-002.

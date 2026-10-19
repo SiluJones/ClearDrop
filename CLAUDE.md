@@ -8,8 +8,8 @@
 Leia `meta/CEREBRO.md` → o doc de contexto do projeto (ex.: `meta/CONTEXT.md`) → `meta/STATUS.md` antes de agir. Confirme em uma frase o que entendeu.
 
 ## Build / validação
-- Build: `<seu comando de build, ex.: npm run build>`  (PLACEHOLDER — troque pelo do seu projeto)
-- Testes/validação: `<seu comando de teste>` — rode antes de commitar mudança de código.
+- Build: não há — `src/cleardrop.js` é colado no console como está.
+- Testes/validação: `npm test` (jsdom sobre o modal real; precisa de `npm install` uma vez) — rode antes de commitar mudança de código. Esperado: `TODOS OK`, saída 0.
 - Mudança só de doc (meta/) NÃO precisa de build; a rede é o `git diff`.
 - Adicione seus comandos de build/teste ao `allow` de `.claude/settings.json`.
 

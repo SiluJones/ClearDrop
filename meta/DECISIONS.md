@@ -81,3 +81,24 @@ O ClearDrop segue **apenas para o layout «limbo»**, pelo caminho por linha (�
 
 ### Consequências
 O projeto tem prazo de validade embutido: perde a razão de existir quando a última conta sair do limbo. O código precisa ser pequeno, num arquivo só, e falhar alto. A confirmação de remoção ainda não foi medida: o trecho, ao remover, para se aparecer qualquer diálogo inesperado.
+
+---
+
+## DEC-005 — Testes em jsdom sobre o modal real, como dependência só de desenvolvimento
+**Data:** 2026-10-18 · **Status:** aceita
+
+### Contexto
+O trecho remove arquivos sem confirmação do site, e testar no claude.ai é irreversível. O requisito 7 proíbe dependência pesada na ferramenta.
+
+### Decisão
+- **O código:** `src/cleardrop.js` continua sem dependência nenhuma.
+- **Os testes:** `tests/cleardrop.test.js` usa **jsdom 24.1.3** (devDependency fixada) para montar o outerHTML real do modal limbo (`tests/fixtures/modal-limbo.html`, derivado do `261017-0707.html` sem classes, estilos e SVG).
+- **O "site" simulado:** reage como o medido — menu ⋮ com um item, remoção sem confirmação, recarga com spinner.
+- **Validação:** `npm test`.
+
+### Alternativas consideradas
+- **Só teste manual** — cada erro custaria arquivos de verdade.
+- **Playwright contra o claude.ai** — sessão real, termos de uso, e exclusão real; desproporcional.
+
+### Consequências
+O teste prova a lógica contra a estrutura medida, não contra o site vivo: mudança de layout só aparece no roteiro manual ou no uso. O fixture precisa ser regenerado quando o layout limbo mudar.

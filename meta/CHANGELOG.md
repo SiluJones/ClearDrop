@@ -4,6 +4,8 @@
 
 ## [Não lançado]
 ### Adicionado
+- `src/cleardrop.js` 0.1.0: `scan()` (ensaio), `run()` (remoção com confirmação digitada, paradas de segurança, retomada) e `stop()`; recusa no layout com «Selecionar».
+- `tests/cleardrop.test.js` + fixture do modal real; `npm test` com jsdom (DEC-005).
 - Documentação de contexto preenchida (CONTEXT, SPEC, STATUS, DECISIONS DEC-001..003, IDEAS, ROADMAP, GLOSSARY, HISTORY) e log de 2026-10-17.
 - Mapeamento do modal «Arquivos» a partir do outerHTML real (CONTEXT, seção crítica).
 - Análise `meta/analises/261017-ANALISE-forma-e-seletores.md` e o modelo `_TEMPLATE.md`: menu ⋮ medido, exclusão em lote nativa redescoberta, seletores tabelados.
