@@ -2,7 +2,9 @@
 
 > Formato [Keep a Changelog](https://keepachangelog.com/pt-BR/) + [SemVer](https://semver.org/lang/pt-BR/). Entradas novas no topo.
 
-## [Não lançado]
+## [0.1.1] — 2026-10-19
+> Primeira versão que funciona no site real: esvaziou um Projeto de 6 arquivos na conta Free. O 0.1.0 nunca removeu nada (FIX-001).
+
 ### Corrigido
 - 0.1.1: o item «Remover do projeto» era recusado por causa do glifo do ícone (`U+E101`) no texto do menu; rótulos agora são lidos sem o que é `aria-hidden` — FIX-001.
 - Testes montam o menu a partir do outerHTML medido (`tests/fixtures/menu-limbo.html`) e cobrem o glifo (caso 1b).

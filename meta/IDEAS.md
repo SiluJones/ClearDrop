@@ -11,6 +11,12 @@ O pedido original: um botão na página do Projeto (ou no ícone da extensão) q
 ---
 
 ## 🤖 Ideias Ativas — Assistente
+### 2026-10-19 — Abrir a lista de arquivos sozinho
+Pergunta do dono: precisa abrir o modal antes? Hoje sim. A ferramenta pode clicar no botão que abre a lista quando o modal não estiver aberto. Falta medir esse botão no layout limbo (no layout novo é «Mostrar contexto»). Entra junto da F2.
+
+### 2026-10-19 — Confirmação por clique na extensão
+Pergunta do dono: sempre vai ter que digitar o nome do Projeto? No console, digitar é a única barreira, porque o site não confirma. Numa extensão, o próprio clique no botão já é deliberado. Basta uma janela «Remover 6 arquivos de «Canção»?» com Cancelar/Remover, mostrando nome e contagem (requisito 2 da SPEC). Digitar o nome pode ficar como opção. Decide na F2.
+
 ### 2026-10-18 — Detectar o layout e recusar no nativo
 Ao rodar, se o modal tiver «Selecionar» (layout novo) ou não for o modal «Arquivos», não fazer nada e dizer qual recurso nativo usar. Entra na F1 (DEC-004).
 
@@ -32,8 +38,8 @@ Baixar um `.txt` com os nomes, tamanhos e datas excluídos — recibo do que sai
 ---
 
 ## 🛌 Adiadas
-- **Extensão MV3 (forma B)** — adiada por DEC-004: vida útil limitada ao layout «limbo» — **volta quando** alguma conta do dono passar mais de 30 dias no limbo, ou se outras pessoas pedirem a ferramenta.
-- **Bookmarklet do trecho** — adiado até o trecho estabilizar — **volta quando** o dono rodar o trecho mais de 3 vezes e colar no console virar incômodo (o CSP do site pode bloquear; medir antes).
+- **Extensão MV3 (forma B)** — adiada por DEC-004 (vida útil limitada ao limbo). Reaberta em 19/10, quando o dono perguntou pelo uso «pela extensão»; em decisão na F2.
+- **Bookmarklet do trecho** — gatilho batido em 19/10: o dono perguntou como usar sem colar no console. Em decisão com a extensão (F2). O CSP do site pode bloquear; medir antes.
 - **Forma D — repetir a requisição que a página faz ao excluir** — adiada porque é interface interna não documentada e exige leitura dos termos de uso — **volta quando** A/B quebrarem por layout duas vezes, ou se a exclusão por clique se mostrar lenta demais com 100+ arquivos. Medir só método, caminho e status (captura de tela), nunca HAR.
 - **Publicar na Chrome Web Store** — adiada porque exige ler os termos de uso sobre automação de interface — **volta quando** a extensão estiver estável para o dono por um mês.
 - **Rótulos multilíngues (en/pt-BR)** — adiada até medir se o item Excluir e a confirmação têm âncora sem texto — **volta quando** a análise de seletores mostrar dependência de texto.

@@ -13,14 +13,15 @@
 - [x] Análise da forma e dos seletores (`meta/analises/261017-ANALISE-forma-e-seletores.md`) — recomenda encerrar se a conta Free tiver «Selecionar».
 - [x] Conta gratuita conferida: sem «Selecionar» → DEC-004.
 
-## 🟡 F1 — Trecho de console para o layout «limbo» (forma A) *(próxima)*
+## 🟢 F1 — Trecho de console para o layout «limbo» (forma A) *(concluída 2026-10-19, 0.1.1)*
 **Objetivo:** esvaziar um Projeto em layout «limbo» colando um trecho no console; em layout com «Selecionar», recusar e apontar o nativo.
 **Critério de conclusão:** todos os critérios da SPEC passam num Projeto descartável, incluindo uma parada provocada no meio e a retomada.
 - [x] Observar uma remoção: sem confirmação, linha some em ~1,3 s, recarga com spinner.
 - [x] `src/cleardrop.js` + testes jsdom (8/8) — wo0001.
-- [ ] Roteiro manual na conta Free: ensaio e cancelamento ok (19/10); esvaziar falhou no 0.1.0 (FIX-001) — repetir com o 0.1.1.
+- [x] Roteiro manual na conta Free (19/10): ensaio e cancelamento ok; esvaziar falhou no 0.1.0 (FIX-001); com o 0.1.1, «Canção» esvaziado 6/6.
+- Não exercitado no site real: parada no meio e retomada (cobertas só pelos testes 8a/8b).
 
-## 🔵 F2 — Extensão MV3 (forma B) *(condicional: só se o limbo durar — ver IDEAS)*
+## 🟡 F2 — Uso sem colar no console *(em decisão: extensão MV3 ou bookmarklet; ver IDEAS)*
 **Objetivo:** o mesmo núcleo como extensão carregada sem compactação, com um botão.
 **Critério de conclusão:** o dono esvazia um Projeto real com um clique + confirmação.
 

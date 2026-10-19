@@ -5,22 +5,30 @@
 ---
 
 ## Versão Atual
-**0.1.1 (não lançada)** — 2026-10-19 — corrige o primeiro uso real (FIX-001); falta repetir o item 4 do roteiro.
+**0.1.1** — 2026-10-19 — trecho de console funcionando no site real (conta Free, «Canção» esvaziado 6/6). F1 concluída.
 
 ## ✅ Funcionando
-- `src/cleardrop.js` 0.1.0 versionado (`a9cbfe2`), `npm test` verde na máquina do dono.
-- Roteiro na conta Free: itens 1 a 3 ok — carregar, `scan()` e cancelamento por nome errado.
+- `src/cleardrop.js` 0.1.1 (`cfe80aa`):
+  - colar no console com a lista de arquivos aberta;
+  - `scan()` — ensaio;
+  - `run()` — remove após digitar o nome do Projeto;
+  - `stop()`.
+- `npm test`: 11 OK; a contraprova do FIX-001 reproduz a falha antiga.
 
 ## 🔧 Em Progresso
-- **wo0002** (`meta/workorders/261019-wo0002-fix-001-rotulo-com-icone.md`): versionar o 0.1.1 — `visibleLabel()`, fixture do menu medido, caso 1b.
+- **F2 — como usar sem colar no console.** Decisões do dono:
+  1. Formato: extensão MV3 ou bookmarklet.
+  2. Confirmação: clique numa janela que mostra nome e contagem, ou digitar o nome.
+  3. Abrir a lista sozinho.
+  Ver IDEAS de 19/10.
 
 ## ❌ Quebrado / Com Problema
-- **0.1.0 não remove nada no site real** (FIX-001; corrigido no 0.1.1, ainda não versionado nem testado no site).
+- Nada conhecido.
 
 ## 📋 Backlog (curto prazo — itens acionáveis)
-- [ ] Aplicar a wo0002 no Code.
-- [ ] Repetir o item 4 do roteiro na conta Free com o 0.1.1 (Projeto «Canção», 6 arquivos).
-- [ ] README com o uso, depois do item 4 (prints: a tabela do `scan()` e o aviso final do `run()`).
+- [ ] Dono decide o formato da F2 e o tipo de confirmação.
+- [ ] Medir o botão que abre a lista de arquivos no layout limbo (para abrir sozinho).
+- [ ] README com o uso do 0.1.1 (prints: a tabela do `scan()` e o aviso final do `run()`).
 
 ## 💬 Última conversa
-**2026-10-19** — wo0001 aplicada (`a9cbfe2`, 10 OK). No site real, `run()` recusou o item «Remover do projeto» porque o texto traz o glifo `U+E101` do ícone (FIX-001). Corrigido com `visibleLabel()`; teste passou a usar o menu medido; o código antigo reproduz a falha, o novo passa (11 OK).
+**2026-10-19 (2ª)** — wo0002 aplicada (`cfe80aa`, 11 OK, contraprova ok). Item 4 repetido: «Canção» esvaziado 6/6. O dono perguntou se terá sempre de digitar o nome e de abrir a lista antes. Respondido: hoje sim, e as duas coisas podem mudar na F2. Formato e confirmação ficaram em decisão.
