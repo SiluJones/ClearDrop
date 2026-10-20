@@ -11,6 +11,9 @@ O pedido original: um botão na página do Projeto (ou no ícone da extensão) q
 ---
 
 ## 🤖 Ideias Ativas — Assistente
+### 2026-10-20 — Progresso no título da aba
+Enquanto remove, trocar o título da aba para «ClearDrop 19/33 — asehub» (e devolver no fim): dá para acompanhar pela barra de tarefas com a janela minimizada. Mexe no título do site; só se o dono quiser.
+
 ### 2026-10-20 — Ícone próprio da extensão
 Hoje o Chrome mostra uma letra «C» genérica. Um ícone PNG (16/32/48/128) ajuda a achá-lo na barra. Pequeno; entra quando o README ganhar os prints.
 
@@ -67,6 +70,9 @@ Baixar um `.txt` com os nomes, tamanhos e datas excluídos — recibo do que sai
 - **2026-10-17** O guia de medição do prompt de início pedia «Copiar outerHTML» do menu ⋮ pelo DevTools; menus efêmeros fecham ao focar o DevTools, e o dono não conseguiu. Para medir UI efêmera, o kit deveria entregar um trecho de console que abre, captura e baixa o resultado.
 - **2026-10-17** O prompt de início citava a pasta do kit como `projeto/`, mas ela já estava renomeada para `ClearDrop/`; e o README do kit diz «logs/ — um arquivo por sessão» enquanto o CEREBRO diz um por dia. Pequenas divergências que confundem o primeiro turno.
 - **2026-10-17** O prompt de início não previa conferir se a lacuna da interface continuava existindo antes de medir os detalhes. Medição barata que teria economizado a F0: «o botão em lote voltou?». Vale como primeiro passo padrão em projetos que contornam a interface de terceiros.
+- **2026-10-20** Duas previsões da wo0004 erraram, e o Code acusou as duas:
+  - **(a) Contagem não ancorada.** `grep -c '"version": "0.2.0"' package-lock.json` previu 2 e deu 3, porque uma dependência por coincidência também era 0.2.0. Faltou ancorar a busca no pacote raiz; o molde de WO já pedia isso, e o chat não aplicou.
+  - **(b) Caminho removido no `git add`.** A WO mandou `git add src` depois de `git rm src/...`, e o caminho já não existia. Em WO com remoção, o `git add` não lista o que foi removido; o `git rm` já deixou a remoção registrada.
 - **2026-10-20** O texto de comando do chat converte `\uXXXX` no caractere antes de chegar ao destino — inclusive na ferramenta de escrita de arquivo. Para o kit: todo código com escapes Unicode gravado pelo assistente precisa de marcador ASCII + troca no destino + conferência por hash, e um teste que acuse o caractere literal.
 - **2026-10-19** A frase «Peça no próximo turno» pediu só o resultado do roteiro e esqueceu o da WO pendente («wo0003 aplicada»); o dono notou. Regra: quando houver WO entregue no turno, a frase começa pelo relatório dela, mesmo que outra tarefa venha junto.
 - **2026-10-19** Teste com DOM simulado escrito à mão passou e o site real falhou (glifo de ícone no texto do menu). Regra para o kit: fixture de teste sai da medição; e a medição de texto de controle deve imprimir os bytes (ou o rótulo acessível), porque glifo de uso privado é invisível no console e no `cut`.

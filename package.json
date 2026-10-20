@@ -1,6 +1,6 @@
 {
   "name": "cleardrop",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "Esvazia os arquivos de conhecimento de um Projeto do claude.ai no layout sem exclusao em lote.",
   "scripts": {

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ClearDrop",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Esvazia os arquivos de conhecimento do Projeto aberto no claude.ai, onde ainda nao ha exclusao em lote.",
   "action": {
     "default_title": "ClearDrop — esvaziar os arquivos deste Projeto"

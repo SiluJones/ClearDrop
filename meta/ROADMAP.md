@@ -21,15 +21,14 @@
 - [x] Roteiro manual na conta Free (19/10): ensaio e cancelamento ok; esvaziar falhou no 0.1.0 (FIX-001); com o 0.1.1, «Canção» esvaziado 6/6.
 - Não exercitado no site real: parada no meio e retomada (cobertas só pelos testes 8a/8b).
 
-## 🟡 F2 — Extensão MV3 *(em curso — DEC-006)*
+## 🟢 F2 — Extensão MV3 *(concluída 2026-10-20, 0.2.0 — DEC-006)*
 **Objetivo:** esvaziar o Projeto aberto com um clique no ícone, confirmando numa janela que mostra nome, contagem e lista, sem abrir a lista antes.
 **Critério de conclusão:** na conta Free, com a lista fechada, ícone → janela → Remover esvazia um Projeto descartável; Cancelar não remove nada; Parar interrompe e o próximo clique continua.
 - [x] Medir o botão que abre a lista: «Mostrar arquivos», `data-quiet-row="context"` (19/10).
 - [x] Núcleo com confirmação e progresso injetáveis + abrir e reabrir a lista; testes (20/10).
 - [x] `extension/` (manifest, service worker, janela em Shadow DOM); testes da janela — 29 OK (20/10, wo0004).
-- [ ] Roteiro manual na conta Free.
-**Objetivo:** o mesmo núcleo como extensão carregada sem compactação, com um botão.
-**Critério de conclusão:** o dono esvazia um Projeto real com um clique + confirmação.
+- [x] Roteiro manual na conta Free (20/10): fora de Projeto mostra «!»; entrando pela barra lateral abre a lista sozinho; Cancelar, Parar e continuar, «Pronto» — 5/5.
+- Achado no uso: com a janela minimizada, parou em 19/33 por estouro de tempo — FIX-002 na 0.2.1 (a validar).
 
 ## 🔵 F3 — Robustez
 **Objetivo:** sobreviver à próxima mudança de layout ou falhar alto.

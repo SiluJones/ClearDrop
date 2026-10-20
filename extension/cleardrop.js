@@ -1,5 +1,5 @@
 /**
- * ClearDrop 0.2.0 — esvazia os arquivos de conhecimento do Projeto aberto no claude.ai.
+ * ClearDrop 0.2.1 — esvazia os arquivos de conhecimento do Projeto aberto no claude.ai.
  *
  * Alvo: o layout «limbo» (lista «Arquivos» SEM o botão «Selecionar»). No layout com
  * «Selecionar», a exclusão em lote é nativa e o ClearDrop se recusa a rodar (DEC-004).
@@ -61,10 +61,31 @@
   let running = false;
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  /** Repete `check()` até devolver algo verdadeiro; devolve esse valor, ou null no teto. */
+  /**
+   * Relógio que só anda com a aba VISÍVEL (FIX-002). Com a janela minimizada ou a aba em
+   * segundo plano, o Chrome desacelera a página — e o próprio site, que demora mais para
+   * recarregar a lista. Contar esse tempo estourava os tetos e parava a remoção no meio.
+   * Um intervalo entre duas leituras só conta se a aba estava visível nas duas pontas, e no
+   * máximo 1 s: ao voltar de um minuto oculta, esse minuto não entra de uma vez.
+   */
+  function visibleClock() {
+    let elapsed = 0;
+    let last = Date.now();
+    let wasVisible = !document.hidden;
+    return () => {
+      const now = Date.now();
+      const visible = !document.hidden;
+      if (visible && wasVisible) elapsed += Math.min(now - last, 1000);
+      last = now;
+      wasVisible = visible;
+      return elapsed;
+    };
+  }
+
+  /** Repete `check()` até devolver algo verdadeiro; devolve esse valor, ou null no teto (tempo visível). */
   async function waitFor(check, timeoutMs) {
-    const start = Date.now();
-    while (Date.now() - start < timeoutMs) {
+    const clock = visibleClock();
+    while (clock() < timeoutMs) {
       const value = check();
       if (value) return value;
       await sleep(TIMING.pollMs);
@@ -152,19 +173,20 @@
 
   /**
    * Espera a lista parar de recarregar: sem spinner por `settleQuietMs` seguidos.
-   * Se a lista fechou nesse meio-tempo, reabre e continua esperando.
+   * Se a lista fechou nesse meio-tempo, reabre e continua esperando. Os dois tempos (o
+   * sossego e o teto) só contam com a aba visível — ver visibleClock().
    */
   async function settle() {
-    const start = Date.now();
-    let quietSince = Date.now();
-    while (Date.now() - start < TIMING.settleMaxMs) {
+    const clock = visibleClock();
+    let quietSince = clock();
+    while (clock() < TIMING.settleMaxMs) {
       let modal = findModal();
       if (!modal) {
         modal = await openList().catch(() => null);
-        quietSince = Date.now();
+        quietSince = clock();
       } else if (modal.querySelector(SELECTORS.listSpinner)) {
-        quietSince = Date.now();
-      } else if (Date.now() - quietSince >= TIMING.settleQuietMs) {
+        quietSince = clock();
+      } else if (clock() - quietSince >= TIMING.settleQuietMs) {
         return modal;
       }
       await sleep(TIMING.pollMs);
@@ -343,6 +365,6 @@
     console.log('ClearDrop: vai parar depois do arquivo da vez.');
   }
 
-  window.ClearDrop = { version: '0.2.0', scan, run, stop, SELECTORS, LABELS, TIMING };
-  console.log('ClearDrop 0.2.0 carregado. ClearDrop.scan() = ensaio · ClearDrop.run() = remover tudo · ClearDrop.stop() = parar.');
+  window.ClearDrop = { version: '0.2.1', scan, run, stop, SELECTORS, LABELS, TIMING };
+  console.log('ClearDrop 0.2.1 carregado. ClearDrop.scan() = ensaio · ClearDrop.run() = remover tudo · ClearDrop.stop() = parar.');
 })();

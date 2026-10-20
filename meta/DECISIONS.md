@@ -139,3 +139,14 @@ O 0.1.1 funciona no site real, mas exige colar no Console, abrir a lista antes e
 - Mais peças: `manifest.json`, service worker, interface. O núcleo continua testável em jsdom.
 - A interface da janela também precisa de teste.
 - O ícone pode ficar escondido no menu de extensões do Chrome: o roteiro manda fixá-lo.
+
+---
+
+## FIX-002 — Remoção parava com a janela minimizada
+**Data:** 2026-10-20
+
+- **Sintoma:** no Projeto «asehub» (33 arquivos, conta Free), com a janela minimizada, a extensão parou depois de 19 com «A lista não terminou de recarregar em 20000 ms depois de «IDEAS__template-update.md»». A parada foi segura: disse quantos restavam e onde parou.
+- **Causa raiz:** os tetos de espera (`waitFor`, `settle`) eram medidos em tempo de relógio. Com a aba oculta, o Chrome desacelera a página. Os temporizadores ficam limitados, e depois de alguns minutos ocultos ficam bem mais espaçados. O próprio site também demora mais para terminar a recarga da lista. Os 20 s passavam sem que a lista tivesse chance de assentar.
+- **Solução:** `visibleClock()`, um relógio que só anda com a aba visível; `waitFor` e `settle` medem por ele. O intervalo entre duas leituras só conta se a aba estava visível nas duas pontas, e no máximo 1 s, para que voltar de um minuto oculta não estoure o teto de uma vez. Oculta, a remoção não para; só fica mais lenta, como o navegador decide.
+- **Prova:** caso 11c (a recarga trava enquanto oculta, por mais que o teto) e 11e (o relógio salta 60 s na volta). O relógio de parede reproduz a mensagem do asehub e derruba os dois; contar o intervalo ao voltar derruba o 11e.
+- **Lição:** em automação de página, tempo de espera é «tempo visível», não «tempo de parede». Virou a armadilha 12 do CONTEXT.

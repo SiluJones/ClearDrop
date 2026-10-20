@@ -3,6 +3,15 @@
 > Formato [Keep a Changelog](https://keepachangelog.com/pt-BR/) + [SemVer](https://semver.org/lang/pt-BR/). Entradas novas no topo.
 
 ## [Não lançado]
+### Corrigido
+- 0.2.1: com a janela minimizada (ou a aba em segundo plano), a remoção parava com «A lista não terminou de recarregar em 20000 ms» — os tempos de espera agora só contam com a aba visível (FIX-002).
+### Adicionado
+- Testes 11c/11e (aba oculta) e 11d (arquivo do Projeto com nome começando por «_»): 32 verificações.
+- Prints da janela no README (`docs/img/`).
+
+## [0.2.0] — 2026-10-20
+> Validada na conta Free: roteiro 5/5.
+
 ### Adicionado
 - 0.2.0: extensão do Chrome (`extension/`). Clique no ícone → a lista abre sozinha → janela com nome, contagem e lista → Cancelar/Remover → progresso com Parar → resultado (DEC-006).
 - O núcleo abre a lista de arquivos se estiver fechada e a reabre se fechar no meio.

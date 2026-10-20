@@ -21,11 +21,23 @@ Para atualizar depois de um `git pull`: em `chrome://extensions`, clique no ↻ 
 
 **Não há como desfazer**, e o site não pede confirmação ao remover: a janela do ClearDrop é a única barreira.
 
+![Janela de confirmação: nome do Projeto, contagem, lista dos arquivos, Cancelar e Remover](docs/img/confirmacao.png)
+
+![Resultado: «Pronto», com quantos arquivos saíram](docs/img/pronto.png)
+
+## Quanto tempo leva
+Cerca de 3 segundos por arquivo com a aba à vista: é o tempo que o próprio site leva para remover um arquivo e recarregar a lista, mais uma pausa curta entre eles, de propósito.
+
+Pode minimizar ou trocar de aba: a remoção continua. Mas o Chrome desacelera abas ocultas, e depois de alguns minutos fora de vista desacelera bastante. Para terminar rápido, deixe a aba à vista. Se algo der errado, a janela diz quantos saíram e onde parou; clicar no ícone de novo continua dos que restaram.
+
 ## O que ele não toca
 Conversas, Instruções, outros Projetos e qualquer coisa fora do claude.ai. A extensão não pede permissão nenhuma além de rodar no claude.ai, não guarda nada e não fala com servidor nenhum: ela só clica na página, como você clicaria.
 
 ## Sem instalar (Console)
 Com o Projeto aberto: F12 → Console → cole `extension/cleardrop.js` inteiro → `ClearDrop.scan()` (ensaio, não remove) ou `ClearDrop.run()` (pede para digitar o nome do Projeto).
+
+## Por que a extensão fica na pasta `extension/`
+O Chrome se recusa a carregar uma extensão cuja pasta tenha arquivos começando com `_`, e este repositório tem `_TEMPLATE.md` em `meta/`. Por isso a extensão vive numa pasta só dela. Isso não tem nada a ver com os arquivos do seu Projeto: um `_TEMPLATE.md` subido ao Projeto é removido como qualquer outro.
 
 ## Desenvolvimento
 - `npm install` uma vez; `npm test` roda os testes em jsdom sobre o HTML medido do site (`tests/fixtures/`).

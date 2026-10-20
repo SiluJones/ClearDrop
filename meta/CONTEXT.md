@@ -79,6 +79,7 @@ Medido em 2026-10-17 sobre `261017-0707.html` (outerHTML real, Projeto com 35 ar
 9. **Comparar `textContent` de botão ou item de menu** — os ícones do site são glifos de fonte de uso privado dentro de `aria-hidden` (ex.: `U+E101` antes de «Remover do projeto»), invisíveis no console e no alerta. → Ler o rótulo sem o `aria-hidden` (`visibleLabel`) e montar fixture de teste a partir do outerHTML medido — FIX-001.
 10. **Restringir o content script a `/project/*`** — o claude.ai troca de página sem recarregar, e o Chrome só injeta content script em carregamento de página: quem entra no Projeto pela tela inicial ficaria sem a extensão. → Injetar em `claude.ai/*` e conferir a URL no clique (DEC-006).
 11. **Confiar que a lista do site fica aberta** — um clique em qualquer coisa fora dela (inclusive na janela da extensão) pode fechá-la. → Reabrir pelo `button[data-quiet-row="context"]` sempre que ela não estiver na tela (`openList()`).
+12. **Medir tetos de espera em tempo de relógio** — com a janela minimizada ou a aba em segundo plano, o Chrome desacelera a página e o site demora mais, e o teto estoura sem nada estar errado. → Medir só o tempo com a aba visível (`visibleClock()`) — FIX-002.
 
 ## 📁 Arquivos Críticos (não mexer sem contexto)
 - `../261017-0707.html` — a única medição real do modal; base de todos os seletores atuais.

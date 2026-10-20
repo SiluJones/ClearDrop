@@ -22,7 +22,7 @@ const TRIGGER = 'button[aria-haspopup="menu"]:not([data-testid])';
 
 /** Monta uma página de Projeto com a lista real e um "site" simulado que reage aos cliques. */
 function page({ menuLabel = 'Remover do projeto', confirmDialog = false, nativeSelect = false, promptAnswer = 'mapsmith',
-  dropRow = false, listOpen = true, closeOnOutside = false, closeAfterRemovals = 0, withUi = false } = {}) {
+  dropRow = false, listOpen = true, closeOnOutside = false, closeAfterRemovals = 0, withUi = false, stallWhileHidden = false } = {}) {
   const dom = new JSDOM(`<!doctype html><html><head><title>mapsmith - Claude</title></head><body>
     <main><button type="button" aria-label="Mostrar arquivos" data-quiet-row="context"></button></main>${MODAL}</body></html>`,
     { url: 'https://claude.ai/project/abc', runScripts: 'outside-only', pretendToBeVisual: true });
@@ -32,6 +32,9 @@ function page({ menuLabel = 'Remover do projeto', confirmDialog = false, nativeS
   w.alert = (m) => log.alerts.push(m);
   w.prompt = () => promptAnswer;
   w.console = { log() {}, table() {}, error: (m) => log.errors.push(String(m)) };
+  // Aba oculta (janela minimizada): o teste liga e desliga; o navegador real faz isso sozinho.
+  const view = { hidden: false };
+  Object.defineProperty(d, 'hidden', { configurable: true, get: () => view.hidden });
   const modal = d.querySelector('[role="dialog"]');
   const portal = modal.closest('[data-cds-portal]') || modal;
   // O rodapé real é um nó de texto («35 arquivos») dentro de um span com outros filhos.
@@ -60,7 +63,10 @@ function page({ menuLabel = 'Remover do projeto', confirmDialog = false, nativeS
         let r = trigBtn; while (!r.querySelector('time')) r = r.parentElement; r.remove();
         footerEl.nodeValue = (Number(footerEl.nodeValue.match(/\d+/)[0]) - 1) + ' arquivos';
         const s = d.createElement('div'); s.setAttribute('role', 'status'); s.innerHTML = '<span data-cds="Spinner"></span>Carregando...';
-        setTimeout(() => modal.appendChild(s), 20); setTimeout(() => s.remove(), 120);
+        setTimeout(() => modal.appendChild(s), 20);
+        // Com a aba oculta, o site real demora a terminar a recarga; aqui ela só termina quando a aba volta.
+        const finish = () => { if (stallWhileHidden && view.hidden) setTimeout(finish, 20); else s.remove(); };
+        setTimeout(finish, 120);
         removals++;
         if (closeAfterRemovals && removals === closeAfterRemovals) setTimeout(closeList, 60); // fecha no meio da recarga
       }, 30);
@@ -74,7 +80,7 @@ function page({ menuLabel = 'Remover do projeto', confirmDialog = false, nativeS
   if (withUi) w.eval(UI);
   Object.assign(w.ClearDrop.TIMING, { pollMs: 5, openMs: 300, menuMs: 300, removeMs: 500, settleQuietMs: 60, settleMaxMs: 2000, paceMinMs: 1, paceMaxMs: 2 });
   const shadow = () => { const h = d.querySelector('cleardrop-ui'); return h && h.isConnected ? h.shadowRoot : null; };
-  return { w, d, modal, portal, footerEl, log, shadow, closeList, rows: () => modal.querySelectorAll(TRIGGER).length };
+  return { w, d, modal, portal, footerEl, log, shadow, closeList, view, rows: () => modal.querySelectorAll(TRIGGER).length };
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -146,6 +152,25 @@ const check = (name, ok, extra = '') => { console.log(`${ok ? 'OK  ' : 'FALHA'} 
   { const p = page(); const first = p.w.ClearDrop.run({ confirm: async () => true, notify: () => {} });
     const second = await p.w.ClearDrop.run({ confirm: async () => true, notify: () => {} }); await first;
     check('13 segundo run simultaneo recusado', second.status === 'busy' && p.rows() === 0, `segundo=${second.status}`); }
+
+  // 11c. FIX-002: aba oculta por mais que o teto de recarga (settleMaxMs = 2000 nos testes):
+  //      a recarga do site trava enquanto oculta; ao voltar, a remoção continua e termina.
+  { const p = page({ stallWhileHidden: true });
+    const res = await p.w.ClearDrop.run({ confirm: async () => true, notify: () => {},
+      onProgress: (step) => { if (step.removed === 2) { p.view.hidden = true; setTimeout(() => { p.view.hidden = false; }, 3000); } } });
+    check('11c aba oculta nao estoura o teto', res.status === 'done' && p.rows() === 0, `status=${res.status} msg="${res.message.split('\n')[0]}"`); }
+  // 11e. FIX-002: no Chrome real a aba oculta é desacelerada, e a primeira leitura depois de voltar
+  //      vem com um intervalo grande. Simula isso com o relógio saltando 60 s na volta: esse
+  //      intervalo não pode entrar de uma vez na conta do teto.
+  { const p = page({ stallWhileHidden: true }); const realNow = p.w.Date.now.bind(p.w.Date); let skew = 0;
+    p.w.Date.now = () => realNow() + skew;
+    const res = await p.w.ClearDrop.run({ confirm: async () => true, notify: () => {},
+      onProgress: (step) => { if (step.removed === 2) { p.view.hidden = true; setTimeout(() => { skew += 60000; p.view.hidden = false; }, 300); } } });
+    check('11e volta de aba oculta nao conta o intervalo', res.status === 'done' && p.rows() === 0, `status=${res.status} msg="${res.message.split('\n')[0]}"`); }
+  // 11d. Arquivo do Projeto com nome começando por «_» sai como qualquer outro.
+  { const p = page(); p.modal.querySelector('button[aria-label="CEREBRO.md"]').setAttribute('aria-label', '_TEMPLATE.md');
+    const names = await p.w.ClearDrop.scan(); const res = await p.w.ClearDrop.run({ confirm: async () => true, notify: () => {} });
+    check('11d arquivo _TEMPLATE.md e removido', names.includes('_TEMPLATE.md') && res.status === 'done' && p.rows() === 0, `status=${res.status}`); }
 
   // ---------- Janela da extensão (ui.js) ----------
   // 14. Lista fechada → janela com nome, contagem e lista → Cancelar: nada sai, janela some.
