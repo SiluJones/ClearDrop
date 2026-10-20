@@ -5,30 +5,26 @@
 ---
 
 ## Versão Atual
-**0.1.1** — 2026-10-19 — trecho de console funcionando no site real (conta Free, «Canção» esvaziado 6/6). F1 concluída.
+**0.2.0 (não lançada)** — 2026-10-20 — extensão escrita e testada em jsdom (29 OK); falta o roteiro na conta Free.
 
 ## ✅ Funcionando
-- `src/cleardrop.js` 0.1.1 (`cfe80aa`):
-  - colar no console com a lista de arquivos aberta;
-  - `scan()` — ensaio;
-  - `run()` — remove após digitar o nome do Projeto;
-  - `stop()`.
-- `npm test`: 11 OK; a contraprova do FIX-001 reproduz a falha antiga.
+- 0.1.1 pelo Console no site real (`cfe80aa`).
+- 0.2.0 no ambiente do chat:
+  - `extension/` com manifest, service worker, núcleo e janela;
+  - `npm test` 29 OK;
+  - mutações conferidas (sem a guarda do clique fora → 15a cai; sem reabrir → 11b cai; sem abrir → 9, 10, 11, 14 caem).
 
 ## 🔧 Em Progresso
-- **F2 — como usar sem colar no console.** Decisões do dono:
-  1. Formato: extensão MV3 ou bookmarklet.
-  2. Confirmação: clique numa janela que mostra nome e contagem, ou digitar o nome.
-  3. Abrir a lista sozinho.
-  Ver IDEAS de 19/10.
+- **wo0004** (`meta/workorders/261020-wo0004-f2-extensao.md`): versionar a extensão, remover `src/`, apontar o `CLAUDE.md` para `extension/`, `npm test`.
 
 ## ❌ Quebrado / Com Problema
 - Nada conhecido.
+- **Não verificado no site:** se o «clique fora» realmente fecha a lista do site. A guarda e a reabertura cobrem os dois casos.
 
 ## 📋 Backlog (curto prazo — itens acionáveis)
-- [ ] Dono decide o formato da F2 e o tipo de confirmação.
-- [ ] Medir o botão que abre a lista de arquivos no layout limbo (para abrir sozinho).
-- [ ] README com o uso do 0.1.1 (prints: a tabela do `scan()` e o aviso final do `run()`).
+- [ ] Aplicar a wo0004 no Code.
+- [ ] Instalar a extensão na conta Free e rodar o roteiro (Cancelar, Remover, Parar e continuar).
+- [ ] Prints para o README: a janela de confirmação e a tela «Pronto».
 
 ## 💬 Última conversa
-**2026-10-19 (2ª)** — wo0002 aplicada (`cfe80aa`, 11 OK, contraprova ok). Item 4 repetido: «Canção» esvaziado 6/6. O dono perguntou se terá sempre de digitar o nome e de abrir a lista antes. Respondido: hoje sim, e as duas coisas podem mudar na F2. Formato e confirmação ficaram em decisão.
+**2026-10-20** — Medição: «Mostrar arquivos» (`data-quiet-row="context"`) abre a lista. Escritos `extension/` (DEC-006 ajustada: `claude.ai/*` por causa da navegação sem recarga; núcleo dentro de `extension/` por causa dos `_TEMPLATE.md`), testes 29 OK e README com a instalação. Achado: escapes `\uXXXX` no texto de comando viram o caractere invisível; virou técnica no CEREBRO e o caso 20 do teste.

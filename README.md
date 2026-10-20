@@ -1,18 +1,32 @@
-# ClearDrop — projeto de contexto (Desenvolvimento)
+# ClearDrop
 
-Estrutura de arranque gerada pelo Kit de Contexto Universal v1.126.0.
-Data: 2026-10-17
+Esvazia de uma vez os **arquivos de conhecimento** de um Projeto do claude.ai — e só eles —, nas contas cuja lista de arquivos ainda não tem «Selecionar» (o layout de transição de out/2026). Onde a lista já tem «Selecionar → Selecionar tudo → Excluir», o ClearDrop se recusa e aponta o recurso nativo.
 
-## Estrutura
-- `meta/` — arquivos de contexto (CEREBRO define COMO o assistente age; CONTEXT, O QUE o projeto e; STATUS/DECISIONS/IDEAS...).
-- `INSTRUCOES-DO-PROJETO.md` — cole em Projeto -> Instrucoes no claude.ai (versao curta, lida em toda mensagem).
-- `logs/` — um arquivo por sessao (vazia por enquanto).
-- `meta/analises/` — uma analise por decisao nao-trivial (problema, o que foi medido, opcoes, recomendacao, riscos, ponto de decisao). NAO vem no pacote: a pasta nasce quando a primeira analise for escrita.
-- `CLAUDE.md` + `.claude/` — arranque do Claude Code (settings + skills apply-wo/wrap). Ajuste o comando de build no CLAUDE.md e no allow do settings.
-- `meta/workorders/` — WOs: instrucoes de aplicacao do chat para o Code (vazia por enquanto).
-- `.gitignore` / `.flatdropignore` — o segundo enxuga o que sobe ao Projeto do Claude sem tirar o versionamento.
+Irmão do FlatDrop: um achata o repositório e sobe; o outro esvazia antes de subir.
 
-## Como comecar
-1. Suba os `meta/` (e o `INSTRUCOES-DO-PROJETO.md`) a um Projeto do claude.ai — ou use o FlatDrop para achatar e subir de uma vez.
-2. Cole o `INSTRUCOES-DO-PROJETO.md` em Projeto -> Instrucoes.
-3. Para desenvolver no Claude Code: abra a pasta; o CLAUDE.md guia o resto.
+## Instalar (uma vez)
+1. No Chrome, abra `chrome://extensions`.
+2. Ligue **Modo do desenvolvedor** (canto superior direito).
+3. **Carregar sem compactação** → escolha a pasta `extension/` deste repositório.
+4. No ícone de quebra-cabeça da barra, **fixe** o ClearDrop.
+5. Recarregue (F5) as abas do claude.ai que já estavam abertas.
+
+Para atualizar depois de um `git pull`: em `chrome://extensions`, clique no ↻ do ClearDrop e recarregue a aba.
+
+## Usar
+1. Abra o Projeto no claude.ai (não precisa abrir a lista de arquivos).
+2. Clique no ícone do ClearDrop.
+3. Confira na janela o nome do Projeto, a contagem e a lista → **Remover** (ou **Cancelar** / Esc).
+4. Acompanhe o progresso; **Parar** interrompe depois do arquivo da vez. Clicar no ícone de novo continua dos que restaram.
+
+**Não há como desfazer**, e o site não pede confirmação ao remover: a janela do ClearDrop é a única barreira.
+
+## O que ele não toca
+Conversas, Instruções, outros Projetos e qualquer coisa fora do claude.ai. A extensão não pede permissão nenhuma além de rodar no claude.ai, não guarda nada e não fala com servidor nenhum: ela só clica na página, como você clicaria.
+
+## Sem instalar (Console)
+Com o Projeto aberto: F12 → Console → cole `extension/cleardrop.js` inteiro → `ClearDrop.scan()` (ensaio, não remove) ou `ClearDrop.run()` (pede para digitar o nome do Projeto).
+
+## Desenvolvimento
+- `npm install` uma vez; `npm test` roda os testes em jsdom sobre o HTML medido do site (`tests/fixtures/`).
+- Contexto, decisões e estado: `meta/` (comece por `meta/CONTEXT.md`).

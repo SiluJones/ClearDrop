@@ -36,7 +36,7 @@
 
 Comece vazia e escreva quando doer duas vezes: técnica que você precisou explicar de novo é candidata. Formato livre — uma linha por item, com o nome do lugar onde ela vale. Se um item virar regra geral do projeto, promova-o para o corpo do CEREBRO e deixe aqui só o caso particular.
 
-- _(vazio — o primeiro item entra na primeira vez que uma técnica precisar ser repetida)_
+- **Escapes `\uXXXX` no texto de comando do chat viram o próprio caractere** antes de chegar ao shell ou ao Python — e caractere de uso privado é invisível (foi assim que surgiu o FIX-001 e quase saíram dois arquivos com `U+E000` literal). Ao gravar código com `\u`, escreva um marcador ASCII (ex.: `__BSU__`) e troque no destino com `chr(92)+'u'`; confira por `sha1sum`. O caso 20 do `npm test` falha se algum arquivo da extensão tiver o caractere literal. (Vale para todo arquivo que o chat grava: `extension/`, `tests/`.)
 
 ## Princípios de trabalho
 

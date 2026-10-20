@@ -2,6 +2,17 @@
 
 > Formato [Keep a Changelog](https://keepachangelog.com/pt-BR/) + [SemVer](https://semver.org/lang/pt-BR/). Entradas novas no topo.
 
+## [Não lançado]
+### Adicionado
+- 0.2.0: extensão do Chrome (`extension/`). Clique no ícone → a lista abre sozinha → janela com nome, contagem e lista → Cancelar/Remover → progresso com Parar → resultado (DEC-006).
+- O núcleo abre a lista de arquivos se estiver fechada e a reabre se fechar no meio.
+- `README.md` com instalação e uso.
+- Testes: 20 casos, 29 verificações — janela, abrir/reabrir, Projeto vazio, execução dupla, nome com HTML, caractere invisível literal.
+### Modificado
+- O núcleo mudou de `src/cleardrop.js` para `extension/cleardrop.js`; `run()` aceita `confirm`, `onProgress` e `notify` e devolve um resultado; `scan()` ficou assíncrono.
+### Removido
+- `src/` (o núcleo vive em `extension/`).
+
 ## [0.1.1] — 2026-10-19
 > Primeira versão que funciona no site real: esvaziou um Projeto de 6 arquivos na conta Free. O 0.1.0 nunca removeu nada (FIX-001).
 

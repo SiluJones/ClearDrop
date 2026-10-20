@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "ClearDrop",
+  "version": "0.2.0",
+  "description": "Esvazia os arquivos de conhecimento do Projeto aberto no claude.ai, onde ainda nao ha exclusao em lote.",
+  "action": {
+    "default_title": "ClearDrop — esvaziar os arquivos deste Projeto"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["cleardrop.js", "ui.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

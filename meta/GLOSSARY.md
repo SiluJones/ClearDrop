@@ -22,6 +22,12 @@
 - **Forma B** — extensão do Chrome Manifest V3.
 - **Forma C** — userscript. **D** — repetir a requisição interna. **E** — Projeto novo. **F** — Claude in Chrome clicando.
 
+## Extensão
+- **Ícone do ClearDrop** — o botão na barra do Chrome (`action`) que dispara tudo; nada roda sem ele.
+- **Janela do ClearDrop** — a confirmação/progresso/resultado desenhada pela extensão sobre a página, em Shadow DOM (`<cleardrop-ui>`).
+- **«Mostrar arquivos»** — o botão da página do Projeto que abre a lista (`data-quiet-row="context"`); o ClearDrop o usa para abrir e reabrir a lista.
+- **Clique fora** — clique fora da lista do site, que pode fechá-la; a janela segura o pointerdown e o núcleo reabre a lista.
+
 ## Comandos / artefatos
 - **FlatDrop** — ferramenta-irmã: achata o repositório e sobe ao Projeto.
 - **KCM** — Kit de Contexto Universal, que gerou os meta/ e as Instruções.
