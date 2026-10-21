@@ -25,6 +25,8 @@
 - [ ] Dono escolhe o próximo passo, ou nenhum: ícone próprio, progresso no título da aba, F3 (autodiagnóstico de layout), ou deixar o projeto em manutenção.
 
 ## 💬 Última conversa
+**2026-10-21** — wo0006 aplicada pelo Code (`b7514ca`, empurrada): 6 hashes conferidos, registro da 0.2.1 versionado. Sobrou `extension/Terra.pdf` não rastreado (fora da WO, intocado); dono decide se fica ou sai.
+
 **2026-10-20 (4ª)** — wo0005 aplicada (`2f2c968`) e `/wrap` do Code (`e0dc674`). Roteiro minimizado no «asehub»: 3/3, terminou os 14 arquivos. 0.2.1 cortada no CHANGELOG. O projeto cumpre o objetivo; próximos passos em aberto.
 
 **2026-10-20 (3ª)** — wo0005 aplicada pelo Code (`2f2c968`, empurrada): 14 hashes conferidos, lock 0.2.1, 32 OK.
