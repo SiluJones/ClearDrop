@@ -11,6 +11,13 @@ O pedido original: um botão na página do Projeto (ou no ícone da extensão) q
 ---
 
 ## 🤖 Ideias Ativas — Assistente
+### 2026-10-21 — Encurtar a pausa entre arquivos (pergunta do dono)
+Hoje um arquivo leva ~3 s, medidos pelos prints de 20/10 (3 arquivos em ~10 s):
+- **~1,3 s:** o site removendo; não dá para mudar.
+- **~1,5 s:** a espera até a lista assentar; protege as conferências, e não se mexe.
+- **0,7–1,4 s:** a pausa de propósito.
+Baixar a pausa para 0,3–0,6 s economiza ~0,6 s por arquivo (~20%: 33 arquivos de ~1,6 para ~1,3 min). O risco é baixo, porque a correção não depende da pausa: cada remoção é conferida pelo rodapé e pela lista. Fica à escolha do dono.
+
 ### 2026-10-20 — Progresso no título da aba
 Enquanto remove, trocar o título da aba para «ClearDrop 19/33 — asehub» (e devolver no fim): dá para acompanhar pela barra de tarefas com a janela minimizada. Mexe no título do site; só se o dono quiser.
 

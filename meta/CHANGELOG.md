@@ -2,7 +2,9 @@
 
 > Formato [Keep a Changelog](https://keepachangelog.com/pt-BR/) + [SemVer](https://semver.org/lang/pt-BR/). Entradas novas no topo.
 
-## [Não lançado]
+## [0.2.1] — 2026-10-20
+> Validada na conta Free: o «asehub» terminou (14 arquivos) com a janela minimizada por um tempo.
+
 ### Corrigido
 - 0.2.1: com a janela minimizada (ou a aba em segundo plano), a remoção parava com «A lista não terminou de recarregar em 20000 ms» — os tempos de espera agora só contam com a aba visível (FIX-002).
 ### Adicionado

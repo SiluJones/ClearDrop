@@ -28,7 +28,7 @@
 - [x] Núcleo com confirmação e progresso injetáveis + abrir e reabrir a lista; testes (20/10).
 - [x] `extension/` (manifest, service worker, janela em Shadow DOM); testes da janela — 29 OK (20/10, wo0004).
 - [x] Roteiro manual na conta Free (20/10): fora de Projeto mostra «!»; entrando pela barra lateral abre a lista sozinho; Cancelar, Parar e continuar, «Pronto» — 5/5.
-- Achado no uso: com a janela minimizada, parou em 19/33 por estouro de tempo — FIX-002 na 0.2.1 (a validar).
+- Achado no uso: com a janela minimizada, parou em 19/33 por estouro de tempo — FIX-002 na 0.2.1, validada em 20/10 (o «asehub» terminou com a janela minimizada).
 
 ## 🔵 F3 — Robustez
 **Objetivo:** sobreviver à próxima mudança de layout ou falhar alto.
