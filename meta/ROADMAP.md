@@ -30,6 +30,14 @@
 - [x] Roteiro manual na conta Free (20/10): fora de Projeto mostra «!»; entrando pela barra lateral abre a lista sozinho; Cancelar, Parar e continuar, «Pronto» — 5/5.
 - Achado no uso: com a janela minimizada, parou em 19/33 por estouro de tempo — FIX-002 na 0.2.1, validada em 20/10 (o «asehub» terminou com a janela minimizada).
 
+## 🟡 F2.2 — Confirmação do site e ícone *(próxima — aberta em 24/11)*
+**Objetivo:** voltar a esvaziar no layout «limbo» agora que «Remover do projeto» abre a confirmação «Remover <arquivo>? Isso não pode ser desfeito.» (desde 06/11), e dar à extensão um ícone próprio.
+**Critério de conclusão:** na conta Free, ícone → Remover esvazia um Projeto descartável passando pela confirmação do site arquivo a arquivo, confirmando só o diálogo cujo título nomeia o arquivo da vez; o ícone se distingue do outro «C» da barra.
+- [ ] Medir o DOM do diálogo de confirmação (observador `../261018-GUIA-OBSERVAR-REMOCAO.md`, confirmando a cobaia).
+- [ ] Núcleo: tratar a confirmação esperada (título com o nome do arquivo + botão «Remover arquivo») e seguir parando em qualquer outro diálogo; fixture do diálogo medido; mutação.
+- [ ] Ícone: PNG 16/32/48/128 em `extension/icons/` + `icons` e `action.default_icon` no manifest.
+- [ ] Roteiro na conta Free.
+
 ## 🔵 F3 — Robustez
 **Objetivo:** sobreviver à próxima mudança de layout ou falhar alto.
 - Autodiagnóstico de seletores; estudo da forma D (só observação).

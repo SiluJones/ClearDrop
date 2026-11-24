@@ -57,7 +57,7 @@ Medido em 2026-10-17 sobre `261017-0707.html` (outerHTML real, Projeto com 35 ar
   - **«limbo»:** modal «Arquivos», sem «Selecionar»; é o alvo; medido numa conta Free, com 36 linhas e o mesmo menu ⋮ «Remover do projeto»;
   - **novo:** modal «Contexto» com «Selecionar».
 - **Remoção (medida na conta Free em 18/10):**
-  - **«Remover do projeto» não pede confirmação:** a linha some ~1,3 s depois de o menu abrir, sem diálogo. A confirmação digitada do ClearDrop é a única proteção.
+  - **«Remover do projeto» não pedia confirmação até 05/11:** a linha sumia ~1,3 s depois de o menu abrir. **Desde 06/11 pede** [prints de 06/11; DOM ainda não medido]: diálogo «Remover <arquivo>? / Isso não pode ser desfeito.» com **Cancelar** e **Remover arquivo**. O ClearDrop 0.2.1 trata isso como diálogo inesperado e para (F2.2).
   - **A lista recarrega ~2 s depois:** aparece um `[role="status"]` com spinner («Carregando...»). É preciso esperar ele sumir antes de conferir.
   - **O menu pode aparecer duas vezes no mesmo instante:** usar só o aberto, `[role="menu"][data-open]`.
 - **Botão que abre a lista (medido na conta Free em 19/10):** `<button aria-label="Mostrar arquivos" data-quiet-row="context">` na página do Projeto. A âncora é `button[data-quiet-row="context"]`, que não depende do idioma; a lista abre ~60 ms depois do clique. No layout novo o rótulo é «Mostrar contexto» (não medido se tem o mesmo atributo; lá o ClearDrop recusa de qualquer jeito).

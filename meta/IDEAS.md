@@ -21,7 +21,8 @@ Baixar a pausa para 0,3–0,6 s economiza ~0,6 s por arquivo (~20%: 33 arquivos 
 ### 2026-10-20 — Progresso no título da aba
 Enquanto remove, trocar o título da aba para «ClearDrop 19/33 — asehub» (e devolver no fim): dá para acompanhar pela barra de tarefas com a janela minimizada. Mexe no título do site; só se o dono quiser.
 
-### 2026-10-20 — Ícone próprio da extensão
+### 2026-10-20 — Ícone próprio da extensão *(pedido pelo dono em 06/11 → F2.2)*
+O dono já usa outra extensão com «C»: as duas ficam iguais na barra (visível nos prints de 06/11). Ele vai pedir um ícone também no outro projeto; aqui, preparar o daqui. Desenho em aberto.
 Hoje o Chrome mostra uma letra «C» genérica. Um ícone PNG (16/32/48/128) ajuda a achá-lo na barra. Pequeno; entra quando o README ganhar os prints.
 
 ### 2026-10-20 — Desligar o ícone fora de um Projeto
